@@ -8,7 +8,7 @@
 ------------   ----------     -----------   --------   -----------  -------------
 2014年11月     [epub]         [ipad.pdf]    [A4.pdf]   [pmag.html]  [github]
 
-### 本期內容 (焦點：從 CSS, LESS/SASS 到 Bootstrap)
+### 本期內容
 * 前言
     * [編輯小語](editor.html)
     * [授權聲明](license.html)
