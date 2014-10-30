@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘">利用 SQL Compact Edition 免費建立擁有 DataBase 的 Azure Websites (作者：陳星銘)</a></li>
+</ul>
+</div>
+<h2 id="利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘"><a href="#利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘">利用 SQL Compact Edition 免費建立擁有 DataBase 的 Azure Websites (作者：陳星銘)</a></h2>
+<p><del> 在只有免費服務才使用 </del> 的這個世代，如果只是一個Demo的小型網站自然不想使用到雲端的SQL DB來做為DataBase (其實只是不想花一個月150左右的DB費用XD)</p>
+<p>鑑於想要使用免費Azure Websites，但又想要連接資料庫的人要怎麼做呢？</p>
+<p>只能每個月砸150台幣買DB了嗎！？</p>
+<p>當然是 <strong>NO！</strong></p>
+<p>今天就來教大家利用SQL Compact Edition不花一毛錢使用擁有 DataBase 的 Azure Websites 吧！</p>
+<p>以下看圖說故事開始：</p>
+<h3 id="第一步打開你的vs安裝兩個nuget套件"><a href="#第一步打開你的vs安裝兩個nuget套件">第一步：打開你的VS安裝兩個Nuget套件</a></h3>
+<p>為你的專案加入兩個Nuget套件，分別是</p>
+<ol style="list-style-type: decimal">
+<li>EntityFrame.SqlServerCompact </li>
+<li>Microsoft SQL Server Compact Edition</li>
+</ol>
+<div class="figure">
+<img src="../img/azure1.jpg" />
+</div>
+<h3 id="第二步加入以下連線字串至web.configconnectionstringsconnectionstrings-區段中"><a href="#第二步加入以下連線字串至web.configconnectionstringsconnectionstrings-區段中"> 第二步：加入以下連線字串至Web.Config <code>&lt;connectionStrings&gt; &lt;/connectionStrings&gt;</code> 區段中</a></h3>
+<pre><code>&lt;add name =&quot;DefaultConnection&quot; connectionString =&quot;Data Source=|DataDirectory|CompactDB.sdf&quot; providerName =&quot;System.Data.SqlServerCe.4.0&quot; /&gt;</code></pre>
+<p>其中 Data Source=|DataDirectory|CompactDB.sdf 可得到相對路徑的 App_Data.sdf</p>
+<div class="figure">
+<img src="../img/azure2.jpg" />
+</div>
+<h3 id="第三步在app_data中右鍵加入新增項目sql-server-資料庫"><a href="#第三步在app_data中右鍵加入新增項目sql-server-資料庫">第三步：在App_Data中右鍵加入→新增項目→Sql Server 資料庫</a></h3>
+<p>注意：這裡我將檔名改為.sdf檔，因為.sdf 很適合小型專案使用，不需要用到.mdf</p>
+<div class="figure">
+<img src="../img/azure3.jpg" />
+</div>
+<p>若你用的和我一樣是MVC的CodeFirst則是改掉你的連線字串後，讓DB自己產生出來，但是這之後有一個很重要的步驟！真的很重要！我卡在這邊很久！操作如下：</p>
+<p>產生DB後→點選右上角顯示所有檔案→找到你的CompactDB.sdf→右鍵加入至專案</p>
+<div class="figure">
+<img src="../img/azure4.jpg" />
+</div>
+<h3 id="第四步到你的azure建立websites"><a href="#第四步到你的azure建立websites">第四步：到你的Azure建立WebSites</a></h3>
+<p>左下新增→接著如圖選擇建立網站</p>
+<div class="figure">
+<img src="../img/azure5.jpg" />
+</div>
+<h3 id="第五步"><a href="#第五步">第五步：</a></h3>
+<p>建好網站後，點選你的網站，點選上方設定，拉到下面，填入剛剛的連接字串，選擇&quot;自訂&quot;，按下方儲存</p>
+<div class="figure">
+<img src="../img/azure6.jpg" />
+</div>
+<h3 id="第六步"><a href="#第六步">第六步：</a></h3>
+<p>到儀表板，點選下載發行設定檔，將其儲存在電腦中</p>
+<div class="figure">
+<img src="../img/azure7.jpg" />
+</div>
+<h3 id="第七步"><a href="#第七步">第七步：</a></h3>
+<p>對你的專案按右鍵→發行→匯入→選到剛剛的設定檔→確定→發行</p>
+<div class="figure">
+<img src="../img/azure8.jpg" />
+</div>
+<p>然後就發行成功囉！完成 <a href="http://websitewithdbforfree.azurewebsites.net/">網址參考</a></p>
+<p>希望有幫助到大家 <del>的錢包</del> ！XD</p>
+<h3 id="授權說明"><a href="#授權說明">授權說明：</a></h3>
+<ul>
+<li>本著作係採用姓名標示-非商業性-相同方式分享 3.0 台灣授權。欲查看本授權條款副本，請到 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/tw/">http://creativecommons.org/licenses/by-nc-sa/3.0/tw/</a> ，或寫信至Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

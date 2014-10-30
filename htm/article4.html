@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#codemirror----有-intellisense-功能的網頁版開源編輯器">CodeMirror -- 有 IntelliSense 功能的網頁版開源編輯器</a></li>
+</ul>
+</div>
+<h2 id="codemirror----有-intellisense-功能的網頁版開源編輯器"><a href="#codemirror----有-intellisense-功能的網頁版開源編輯器">CodeMirror -- 有 IntelliSense 功能的網頁版開源編輯器</a></h2>
+<p>在建構 jsLab 科學計算平台的過程中，由於要讓使用者在 JavaScript 程式編輯上有更好的感受，而不是只能依賴死板板的 textarea 區塊，所以我們找了幾個用 javascript 建構的網頁版程式碼編輯器，像是 Ace、Atom、EditArea 與 CodeMirror 等專案，最後我們認為 CodeMirror 最適合我們使用，因為 CodeMirror 的資源完整，而且具有支援 JavaScript 語言 IntelliSense 功能的插件。</p>
+<ul>
+<li><a href="https://atom.io/">https://atom.io/</a></li>
+<li><a href="http://ace.c9.io/">http://ace.c9.io/</a></li>
+<li><a href="http://www.cdolivet.com/editarea/">http://www.cdolivet.com/editarea/</a></li>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+</ul>
+<p>CodeMirror 支援超過六十種語言的上色與編輯功能，包含 HTML、XML、Javascript、Python、Ruby、C/C++/C#、.... 等等，您可以參考下列網頁。</p>
+<ul>
+<li><a href="http://codemirror.net/mode/index.html">http://codemirror.net/mode/index.html</a></li>
+</ul>
+<p>另外、 CodeMirror 還支援了下列的特色功能。</p>
+<ul>
+<li>A powerful, composable language mode system</li>
+<li>Autocompletion (XML)</li>
+<li>Code folding</li>
+<li>Configurable keybindings</li>
+<li>Vim, Emacs, and Sublime Text bindings</li>
+<li>Search and replace interface</li>
+<li>Bracket and tag matching</li>
+<li>Support for split views</li>
+<li>Linter integration</li>
+<li>Mixing font sizes and styles</li>
+<li>Various themes</li>
+<li>Able to resize to fit content</li>
+<li>Inline and block widgets</li>
+<li>Programmable gutters</li>
+<li>Making ranges of text styled, read-only, or atomic</li>
+<li>Bi-directional text support</li>
+<li>Many other methods and addons...</li>
+</ul>
+<p>其中我們最需要的是 JavaScript 的 Intellisense 功能，該功能的範例網址如下：</p>
+<ul>
+<li><a href="http://codemirror.net/demo/complete.html">http://codemirror.net/demo/complete.html</a></li>
+</ul>
+<p>可惜的是，該範例使用 Ctrl-Space 做為 Intellisense 的功能鍵，但是這個按鍵與繁體中文 windows 的輸入法切換功能相衝，所以沒辦法正常運作，因此我們將該範例的 「Ctrl-Space」 改為 「Ctrl-.」 ，以避免這種衝突的情況，修改版的範例的網址與程式碼如下。</p>
+<ul>
+<li><a href="http://ccckmit.github.io/jslab/js/codemirror/demo/jscomplete.html">http://ccckmit.github.io/jslab/js/codemirror/demo/jscomplete.html</a></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!doctype html&gt;
+
+&lt;title&gt;CodeMirror: Autocomplete Demo&lt;<span class="ot">/title&gt;</span>
+<span class="ot">&lt;meta charset=&quot;utf-8&quot;/</span>&gt;
+&lt;link rel=stylesheet href=<span class="st">&quot;../doc/docs.css&quot;</span>&gt;
+
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> href=<span class="st">&quot;../lib/codemirror.css&quot;</span>&gt;
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> href=<span class="st">&quot;../addon/hint/show-hint.css&quot;</span>&gt;
+&lt;script src=<span class="st">&quot;../lib/codemirror.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;../addon/hint/show</span>-<span class="ot">hint</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;script src=<span class="st">&quot;../addon/hint/javascript-hint.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;../mode/javascript/javascript</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+
+&lt;div id=nav&gt;
+  &lt;a href=<span class="st">&quot;http://codemirror.net&quot;</span>&gt;&lt;img id=logo src=<span class="st">&quot;../doc/logo.png&quot;</span>&gt;&lt;<span class="ot">/a&gt;</span>
+
+<span class="ot">  &lt;ul&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a href=&quot;../index</span>.<span class="fu">html</span><span class="st">&quot;&gt;Home&lt;/a&gt;</span>
+    &lt;li&gt;&lt;a href=<span class="st">&quot;../doc/manual.html&quot;</span>&gt;Manual&lt;<span class="ot">/a&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a href=&quot;https://github.com/marijnh/codemirror&quot;&gt;Code&lt;/a</span>&gt;
+  &lt;<span class="ot">/ul&gt;</span>
+<span class="ot">  &lt;ul&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a class=active href=&quot;#&quot;&gt;Autocomplete&lt;/a</span>&gt;
+  &lt;<span class="ot">/ul&gt;</span>
+<span class="ot">&lt;/div</span>&gt;
+
+&lt;article&gt;
+&lt;h2&gt;Autocomplete Demo&lt;<span class="ot">/h2&gt;</span>
+<span class="ot">&lt;form&gt;&lt;textarea id=&quot;code&quot; name=&quot;code&quot;&gt;</span>
+<span class="ot">function getCompletions</span><span class="fl">(</span><span class="ot">token, context</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">  var found = </span><span class="bn">[]</span><span class="ot">, start = token.string;</span>
+<span class="ot">  function maybeAdd</span><span class="fl">(</span><span class="ot">str</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">str.indexOf</span><span class="fl">(</span><span class="ot">start</span><span class="fl">)</span><span class="ot"> == 0</span><span class="fl">)</span><span class="ot"> found.push</span><span class="fl">(</span><span class="ot">str</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  function gatherCompletions</span><span class="fl">(</span><span class="ot">obj</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">typeof obj == &quot;string&quot;</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">stringProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj instanceof Array</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">arrayProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj instanceof Function</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">funcProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    for </span><span class="fl">(</span><span class="ot">var name in obj</span><span class="fl">)</span><span class="ot"> maybeAdd</span><span class="fl">(</span><span class="ot">name</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+
+<span class="ot">  if </span><span class="fl">(</span><span class="ot">context</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    // If this is a property, see if it belongs to some object we can</span>
+<span class="ot">    // find in the current environment.</span>
+<span class="ot">    var obj = context.pop</span><span class="fl">()</span><span class="ot">, base;</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-variable&quot;</span><span class="fl">)</span>
+<span class="ot">      base = window</span><span class="bn">[obj.string]</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-string&quot;</span><span class="fl">)</span>
+<span class="ot">      base = &quot;&quot;;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-atom&quot;</span><span class="fl">)</span>
+<span class="ot">      base = 1;</span>
+<span class="ot">    while </span><span class="fl">(</span><span class="ot">base != null &amp;&amp; context.length</span><span class="fl">)</span>
+<span class="ot">      base = base</span><span class="bn">[context.pop().string]</span><span class="ot">;</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">base != null</span><span class="fl">)</span><span class="ot"> gatherCompletions</span><span class="fl">(</span><span class="ot">base</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  else {</span>
+<span class="ot">    // If not, just look in the window object and any local scope</span>
+<span class="ot">    // </span><span class="fl">(</span><span class="ot">reading into JS mode internals to get at the local variables</span><span class="fl">)</span>
+<span class="ot">    for </span><span class="fl">(</span><span class="ot">var v = token.state.localVars; v; v = v.next</span><span class="fl">)</span><span class="ot"> maybeAdd</span><span class="fl">(</span><span class="ot">v.name</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    gatherCompletions</span><span class="fl">(</span><span class="ot">window</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    forEach</span><span class="fl">(</span><span class="ot">keywords, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  return found;</span>
+<span class="ot">}</span>
+<span class="ot">&lt;/textarea</span>&gt;&lt;<span class="ot">/form&gt;</span>
+
+<span class="ot">&lt;p&gt;Press &lt;strong&gt;ctrl-.&lt;/strong</span>&gt; to activate <span class="ot">autocompletion</span>. <span class="fu">Built</span>
+<span class="fu">on</span> <span class="fu">top</span> <span class="fu">of</span> <span class="fu">the</span> &lt;a href=<span class="st">&quot;../doc/manual.html#addon_show-hint&quot;</span>&gt;&lt;code&gt;show-hint&lt;<span class="ot">/code&gt;&lt;/a</span>&gt;
+and &lt;a href=<span class="st">&quot;../doc/manual.html#addon_javascript-hint&quot;</span>&gt;&lt;code&gt;javascript-hint&lt;<span class="ot">/code&gt;&lt;/a</span>&gt;
+<span class="ot">addons</span>.&lt;<span class="ot">/p&gt;</span>
+
+<span class="ot">    &lt;script&gt;</span>
+<span class="ot">      var editor = CodeMirror.fromTextArea</span><span class="fl">(</span><span class="ot">document.getElementById</span><span class="fl">(</span><span class="ot">&quot;code&quot;</span><span class="fl">)</span><span class="ot">, {</span>
+<span class="ot">        lineNumbers: true,</span>
+<span class="ot">        extraKeys: {&quot;Ctrl-.&quot;: &quot;autocomplete&quot;},</span>
+<span class="ot">        mode: {name: &quot;javascript&quot;, globalVars: true}</span>
+<span class="ot">      }</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    &lt;/script</span>&gt;
+  &lt;<span class="ot">/article&gt;</span></code></pre>
+<p>不過、雖然 CodeMirror 支援了 JavaScript 的 Intellisense 功能，但是卻不徹底，對於像是字串之類的語法，他可以顯示提示函數與訊息，但對於變數的部分，卻無法正確提示，以下是一個可以正確提示的範例。</p>
+<div class="figure">
+<img src="../img/CodeMirrorJsComplete.jpg" alt="圖、CodeMirror 可以正確提示的 JavaScript 編輯範例" /><p class="caption">圖、CodeMirror 可以正確提示的 JavaScript 編輯範例</p>
+</div>
+<p>如果需要更進一步的正確提示功能，恐怕還是得修改 CodeMirror 的 <code>../addon/hint/javascript-hint.js</code> 模組才行。</p>
+<p>雖然 CodeMirror 已經算不錯了，不過我想還有進步空間，但大體來說 CodeMirror 已經是很好的網頁程式編輯器了。</p>
+<p>不過、如果您需要的是可以加上「粗體、斜體、字型、超連結、....」等功能，那就不是 CodeMirror 所具備的功能了，這種功能是 RichText Editor 才具備的，您可以參考下列文章中的 RichText 編輯器。</p>
+<ul>
+<li><a href="http://blog.smartbear.com/programming/five-free-javascript-libraries-to-add-text-editing-to-your-web-application/">5 Free JavaScript Libraries to Add Text Editing to Your Web Application</a></li>
+</ul>
+<h3 id="參考文獻"><a href="#參考文獻">參考文獻</a></h3>
+<ul>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+<li><a href="http://codemirror.net/demo/complete.html">http://codemirror.net/demo/complete.html</a></li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

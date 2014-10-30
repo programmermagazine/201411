@@ -1,0 +1,1509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="2014 年 11 月" />
+  <title>程式人雜誌</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="header">
+<h1 class="title"><a href="http://programmermagazine.github.com/home/">程式人雜誌</a></h1>
+<h2 class="author">2014 年 11 月</h2>
+<h3 class="date">本期焦點：JsLab - JavaScript 版的科學計算平台</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#前言">前言</a><ul>
+<li><a href="#編輯小語">編輯小語</a></li>
+<li><a href="#授權聲明">授權聲明</a></li>
+</ul></li>
+<li><a href="#本期焦點jslab----javascript-版的科學計算平台">本期焦點：JsLab -- JavaScript 版的科學計算平台</a><ul>
+<li><a href="#科學計算軟體簡介">科學計算軟體簡介</a></li>
+<li><a href="#jslab----javascript-版的科學計算平台">JsLab -- JavaScript 版的科學計算平台</a></li>
+<li><a href="#jslab-科學計算平台背後的開放原始碼結構">「JsLab 科學計算平台」背後的開放原始碼結構</a></li>
+<li><a href="#r.js----從-jstat-延伸出的開源-javascript-機率統計框架">R.js -- 從 jStat 延伸出的開源 JavaScript 機率統計框架</a></li>
+</ul></li>
+<li><a href="#程式人文集">程式人文集</a><ul>
+<li><a href="#d3.js----互動式繪圖框架">d3.js -- 互動式繪圖框架</a></li>
+<li><a href="#c3.js----基於-d3.js-的簡易繪圖框架">c3.js -- 基於 d3.js 的簡易繪圖框架</a></li>
+<li><a href="#vis.js----另一個強大的-javascript-繪圖函式庫">Vis.js -- 另一個強大的 JavaScript 繪圖函式庫</a></li>
+<li><a href="#codemirror----有-intellisense-功能的網頁版開源編輯器">CodeMirror -- 有 IntelliSense 功能的網頁版開源編輯器</a></li>
+<li><a href="#memory-sanitization-作者研發養成所-bridan">Memory Sanitization (作者：研發養成所 Bridan)</a></li>
+<li><a href="#利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘">利用 SQL Compact Edition 免費建立擁有 DataBase 的 Azure Websites (作者：陳星銘)</a></li>
+<li><a href="#函數指標陣列-array-of-function-pointers-作者研發養成所-bridan">函數指標陣列 (Array of Function Pointers) (作者：研發養成所 Bridan)</a></li>
+</ul></li>
+<li><a href="#雜誌訊息">雜誌訊息</a><ul>
+<li><a href="#讀者訂閱">讀者訂閱</a></li>
+<li><a href="#投稿須知">投稿須知</a></li>
+<li><a href="#參與編輯">參與編輯</a></li>
+<li><a href="#公益資訊">公益資訊</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="前言"><a href="#前言">前言</a></h1>
+<h2 id="編輯小語"><a href="#編輯小語">編輯小語</a></h2>
+<p>本期的「程式人雜誌」探討的焦點是我在建構 JsLab 這個「JavaScript 的科學計算平台」上所採用的開放原始碼專案，以及建構這個專案過程中所學到的一些經驗與心得，透過這樣的心得分享，或許可以讓「程式人」對科學計算與開放原始碼的使用有更多的瞭解也說不定。</p>
+<p>---- （「程式人雜誌」編輯 - 陳鍾誠）</p>
+<h2 id="授權聲明"><a href="#授權聲明">授權聲明</a></h2>
+<p>本雜誌許多資料修改自維基百科，採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權，若您想要修改本書產生衍生著作時，至少應該遵守下列授權條件：</p>
+<ol style="list-style-type: decimal">
+<li>標示原作者姓名 (包含該文章作者，若有來自維基百科的部份也請一併標示)。</li>
+<li>採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 的方式公開衍生著作。</li>
+</ol>
+<p>另外、當本雜誌中有文章或素材並非採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 時，將會在該文章或素材後面標示其授權，此時該文章將以該標示的方式授權釋出，請修改者注意這些授權標示，以避免產生侵權糾紛。</p>
+<p>例如有些文章可能不希望被作為「商業性使用」，此時就可能會採用創作共用：<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/tw/">姓名標示、非商業性、相同方式分享</a> 的授權，此時您就不應當將該文章用於商業用途上。</p>
+<p>最後、懇請勿移除公益捐贈的相關描述，以便讓愛心得以持續散播！</p>
+<h1 id="本期焦點jslab----javascript-版的科學計算平台"><a href="#本期焦點jslab----javascript-版的科學計算平台">本期焦點：JsLab -- JavaScript 版的科學計算平台</a></h1>
+<h2 id="科學計算軟體簡介"><a href="#科學計算軟體簡介">科學計算軟體簡介</a></h2>
+<p>很多人都曾經使用過「科學計算軟體」，特別是對於進行學術研究的人員而言，這些軟體可以說是不可或缺的。</p>
+<p>在工程領域，最常被使用的科學計算軟體是 MatLab，這個軟體從「矩陣運算」出發，建構出了龐大的函式庫，讓使用者可以輕易的透過 Matlab 進行電腦實驗。</p>
+<p>另外、在社會科學與統計學領域，很多人會用 SPSS、SAS 等軟體做統計分析，這兩個軟體是從統計出發的科學計算工具。</p>
+<p>事實上、開放原始碼領域也有對應的科學計算軟體，像是 R 與 Octave 都是 Open Source 的科學計算軟體。</p>
+<div class="figure">
+<img src="../img/Octave.jpg" alt="圖、Octave 軟體的官方網站" /><p class="caption">圖、Octave 軟體的官方網站</p>
+</div>
+<p>R 與 SPSS、SAS 的出發點較類似，是從機率統計領域開始建構的，而 Octave 則完全模仿 Matlab 的語法，試圖建構一個與 Matlab 語言相容的科學計算平台，讓 Matlab 的程式資源也可以被 Octave 社群所使用。</p>
+<div class="figure">
+<img src="../img/R.jpg" alt="圖、R 軟體的官方網站" /><p class="caption">圖、R 軟體的官方網站</p>
+</div>
+<p>在開源的科學計算軟體中， <a href="http://www.r-project.org/">R 軟體</a> 的使用者似乎是最多的，但是由於 R 採用的程式語言 S3 並非 OpenSource 程式領域的主流，因此也有人試圖用 Python 等語言去建構出科學計算的環境，像是 <a href="http://www.scipy.org/">SciPy</a> 就整合了 numpy 、sympy、Matplotlib、</p>
+<div class="figure">
+<img src="../img/SciPy.jpg" alt="圖、SciPy 的官方網站" /><p class="caption">圖、SciPy 的官方網站</p>
+</div>
+<p>雖然已經有了這麼多開放原始碼的科學計算軟體，而且我本身也是 R 的使用者，但是、我仍然感到遺憾！</p>
+<p>因為我沒辦法找到建構在 JavaScript 語言上的科學計算軟體，所以、我打算自己建造一個，這個計劃就稱為 JsLab (JavaScript Laboratory)。</p>
+<p>在下列文章中，我將介紹自己為何要建構 JsLab 專案，如何建構 JsLab 專案，並與大家分享我在建構 JsLab 專案時所學到的一些經驗與心得。</p>
+<h2 id="jslab----javascript-版的科學計算平台"><a href="#jslab----javascript-版的科學計算平台">JsLab -- JavaScript 版的科學計算平台</a></h2>
+<p>雖然已經有很多科學計算軟體，像是 MatLab、 Mathematica、SPSS、SAS 等等，而且也有像 R、Octave、SciPy 等開放原始碼的科學計算軟體，但就是沒有以 JavaScript 為主的科學計算軟體。</p>
+<p>於是我們決定要用 JavaScript 建構一個科學計算軟體，所以、JsLab 計劃就誕生了，關於 JsLab 的用法，可以參考下列的展示影片。</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=v-lAsFm1zwQ">展示影片：jslab -- 一個像 R 的 JavaScript 數學實驗環境</a></li>
+</ul>
+<p>下圖是我們已經上傳到 github 上的 JsLab 專案之執行畫面，該程式是一個純粹用 HTML+JavaScript 建構的網頁，網址如下：</p>
+<ul>
+<li><a href="http://ccckmit.github.io/jslab/source/jslab.html">http://ccckmit.github.io/jslab/source/jslab.html</a></li>
+</ul>
+<p>您可以連結到該網頁上直接使用該平台，雖然現在還沒有很強大，不過已經可以使用了。</p>
+<div class="figure">
+<img src="../img/JsLab.jpg" alt="圖、JsLab 的執行畫面 -- 繪製 3D 函數圖" /><p class="caption">圖、JsLab 的執行畫面 -- 繪製 3D 函數圖</p>
+</div>
+<p>在上述網頁中，我預設在編輯器裏放入了一個展示程式如下， JsLab 會執行該程式後將結果放在訊息視窗，並將繪圖部份顯示在右邊的窗框中。</p>
+<p>檔案： curve3D.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">f</span>(x, y) { 
+  <span class="kw">return</span> (<span class="ot">Math</span>.<span class="fu">sin</span>(x/<span class="dv">50</span>) * <span class="ot">Math</span>.<span class="fu">cos</span>(y/<span class="dv">50</span>) * <span class="dv">50</span> + <span class="dv">50</span>); 
+}
+<span class="ot">G</span>.<span class="fu">curve3d</span>(f);</code></pre>
+<p>您可以將程式貼到該網頁的程式編輯區，然後按下執行即可得到執行結果。舉例而言、您可以貼上下列程式到編輯區。</p>
+<p>檔案： curveT.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">G</span>.<span class="fu">curve</span>(<span class="fu">fx</span>(dt, <span class="dv">3</span>), {<span class="dt">name</span>:<span class="st">&quot;dt(3)&quot;</span>,  <span class="dt">step</span>:<span class="fl">0.1</span>});
+<span class="ot">G</span>.<span class="fu">curve</span>(<span class="st">&quot;dt(x,10)&quot;</span>,{<span class="dt">name</span>:<span class="st">&quot;dt(10)&quot;</span>, <span class="dt">step</span>:<span class="fl">0.1</span>});
+<span class="ot">G</span>.<span class="fu">curve</span>(<span class="fu">fx</span>(dt, <span class="dv">25</span>),{<span class="dt">name</span>:<span class="st">&quot;dt(25)&quot;</span>, <span class="dt">step</span>:<span class="fl">0.1</span>});</code></pre>
+<p>然後按下執行的 run 按鈕，就可以看到下列的曲線圖。</p>
+<div class="figure">
+<img src="../img/JsLabCurve.jpg" alt="圖、JsLab 的執行畫面 -- 繪製 2D 曲線圖" /><p class="caption">圖、JsLab 的執行畫面 -- 繪製 2D 曲線圖</p>
+</div>
+<p>或者您也可以將下列程式貼到程式區，然後按下執行的 run 按鈕，就可以看到所繪出的散點圖。</p>
+<p>檔案： plot1.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">Ax = <span class="ot">R</span>.<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">1</span>);
+Ay = <span class="ot">R</span>.<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>);
+Bx = <span class="ot">R</span>.<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>);
+By = <span class="ot">R</span>.<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>);
+<span class="ot">G</span>.<span class="fu">plot</span>(Ax, Ay, {<span class="dt">name</span>:<span class="st">&quot;A&quot;</span>});
+<span class="ot">G</span>.<span class="fu">plot</span>(Bx, By, {<span class="dt">name</span>:<span class="st">&quot;B&quot;</span>});</code></pre>
+<div class="figure">
+<img src="../img/JsLabPlot.jpg" alt="圖、JsLab 的執行畫面 -- 隨機取樣後繪製散點圖" /><p class="caption">圖、JsLab 的執行畫面 -- 隨機取樣後繪製散點圖</p>
+</div>
+<p>當然、如果您將程式存檔在自己的電腦，那麼您也可以按下「選擇檔案」的按鈕，接著選取想要執行的檔案，就可以將程式上傳並執行，以下是我們透過上傳的方式執行 hist.js 程式的結果。</p>
+<p>檔案： hist.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> x = <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="dv">5</span>, <span class="dv">2</span>);
+<span class="ot">G</span>.<span class="fu">hist</span>(x, {<span class="dt">name</span>:<span class="st">&quot;x&quot;</span>, <span class="dt">mode</span>:<span class="st">&quot;normalized&quot;</span>});
+<span class="ot">G</span>.<span class="fu">curve</span>(<span class="st">&quot;dnorm(x, 5,2)&quot;</span>, {<span class="dt">name</span>:<span class="st">&quot;N(5,2)&quot;</span>, <span class="dt">step</span>:<span class="fl">0.2</span>});</code></pre>
+<div class="figure">
+<img src="../img/JsLabHist.jpg" alt="圖、JsLab 的執行畫面 -- 隨機取樣後繪製統計長條圖" /><p class="caption">圖、JsLab 的執行畫面 -- 隨機取樣後繪製統計長條圖</p>
+</div>
+<p>如果您並不想使用瀏覽器介面，也不需要繪製圖形，那麼您也可以採用 node.js 的命令列執行方式，直接引用 JsLab 背後的函式庫，像是 R.js 進行科學計算的動作，以下是我們在 node.js 中使用 R.js 進行隨機抽樣的一個範例。</p>
+<p>檔案： sample.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> U = <span class="fu">require</span>(<span class="st">&quot;../source/U&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../source/R&quot;</span>, <span class="st">&quot;R&quot;</span>);
+
+<span class="fu">log</span>(<span class="st">&quot;=======二項分布測試===========&quot;</span>);
+<span class="fu">log</span>(<span class="st">&quot;pbinom(7, 12, 0.4)=&quot;</span>+<span class="fu">pbinom</span>(<span class="dv">7</span>, <span class="dv">12</span>, <span class="fl">0.4</span>)); <span class="co">// &gt; pbinom(7, 12, 0.4) [1] 0.9426901</span>
+<span class="fu">log</span>(<span class="st">&quot;qbinom(0.9, 12, 0.4)=&quot;</span>+<span class="fu">qbinom</span>(<span class="fl">0.9</span>, <span class="dv">12</span>, <span class="fl">0.4</span>)); <span class="co">// &gt; qbinom(0.9, 12, 0.4)[1] 7</span>
+<span class="fu">log</span>(<span class="st">&quot;qbinom(0.95, 12, 0.4)=&quot;</span>+<span class="fu">qbinom</span>(<span class="fl">0.95</span>, <span class="dv">12</span>, <span class="fl">0.4</span>)); <span class="co">// &gt; qbinom(0.95, 12, 0.4)[1] 8</span>
+
+<span class="fu">log</span>(<span class="st">&quot;=======常態分布抽樣===========&quot;</span>);
+<span class="fu">log</span>(<span class="st">&quot;rnorm=&quot;</span>+rnorm);
+<span class="fu">log</span>(<span class="st">&quot;rnorm(5, 2, 1)=&quot;</span>+<span class="fu">str</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>)));
+<span class="kw">var</span> y = <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="dv">0</span>, <span class="dv">2</span>);
+<span class="fu">log</span>(<span class="st">&quot;y=&quot;</span>+<span class="fu">str</span>(y));
+
+<span class="fu">log</span>(<span class="st">&quot;=======模擬丟銅板 100 次===========&quot;</span>);
+<span class="fu">log</span>(<span class="st">&quot;sample([正, 反], 100)=&quot;</span>+<span class="fu">sample</span>([<span class="st">&quot;正&quot;</span>, <span class="st">&quot;反&quot;</span>], <span class="dv">100</span>));
+
+<span class="fu">log</span>(<span class="st">&quot;=======模擬擲骰子 100 次===========&quot;</span>);
+<span class="fu">log</span>(<span class="st">&quot;sample([1,2,3,4,5,6], 100)=&quot;</span>+<span class="fu">sample</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>], <span class="dv">100</span>));</code></pre>
+<p>執行結果</p>
+<pre><code>D:\Dropbox\Public\jslab\test&gt;node sample.js
+use ../source/R name=R
+use ../js/jstat.js name=jStat
+=======二項分布測試===========
+pbinom(7, 12, 0.4)=0.9426900787200003
+qbinom(0.9, 12, 0.4)=7
+qbinom(0.95, 12, 0.4)=8
+=======常態分布抽樣===========
+rnorm=function (n, mean, sd) { return R.calls(n, jStat.normal.sample, mean, sd);
+ }
+rnorm(5, 2, 1)=[2.0748,2.3562,3.014,3.6833,4.1393]
+y=[-0.3756,1.2935,-1.9635,0.5446,0.6514,2.7079,-1.2434,-4.8451,1.0937,2.5094,0.1
+423,4.6915,1.3294,-1.3275,1.0153,2.5058,-2.5361,1.7784,3.908,-2.2349,0.186,-2.17
+17,-1.4398,0.0423,1.2014]
+=======模擬丟銅板 100 次===========
+sample([正, 反], 100)=正,正,反,反,正,正,反,正,反,反,正,正,反,反,正,正,正,反,反,
+正,反,正,反,反,反,反,正,正,正,反,反,反,正,反,正,反,反,正,反,正,正,正,反,正,反,反
+,正,反,反,正,正,正,正,正,正,正,正,正,反,反,正,正,反,反,反,反,反,反,正,反,反,正,
+反,正,反,反,正,反,正,反,反,反,正,正,反,反,正,正,正,正,反,正,反,反,正,正,反,反,反
+,正
+=======模擬擲骰子 100 次===========
+sample([1,2,3,4,5,6], 100)=3,2,4,6,5,2,4,4,5,5,1,5,1,1,2,1,4,1,1,2,1,4,1,6,1,4,6
+,5,1,4,1,6,1,1,2,6,1,5,1,3,3,1,3,4,2,5,6,4,3,5,2,4,3,1,2,1,6,3,2,4,1,2,1,4,2,6,3
+,5,4,5,4,4,1,4,2,6,2,4,5,2,3,5,1,3,3,2,3,2,1,3,5,3,2,5,3,6,2,4,1,2</code></pre>
+<p>另外、目前我們也還持續的在增加 JsLab 函式庫的功能，像是我們正在為 R.js 加上各種統計檢定的功能，以下是採用 node.js 環境執行檢定的一些案例。</p>
+<p>由於 jStat 函式庫並沒有支援這些統計檢定的函數，因此筆者只好自行撰寫，為了撰寫這些檢定的程式，我甚至將 R 的原始碼給翻了出來，網址如下：</p>
+<ul>
+<li><a href="https://github.com/SurajGupta/r-source/tree/master/src/library/stats/R">https://github.com/SurajGupta/r-source/tree/master/src/library/stats/R</a></li>
+</ul>
+<p>以下是我們對這些檢定功能的一些測試範例，大部分的功能都有對應的 R 操作與執行結果，這樣我們就能利用 R 軟體來驗證我們所寫的檢定函數是否正確了。</p>
+<p>檔案： rtest.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> U = <span class="fu">require</span>(<span class="st">&quot;../source/U&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../source/R&quot;</span>, <span class="st">&quot;R&quot;</span>);
+
+<span class="co">// x = rnorm(10, 5, 2)</span>
+<span class="kw">var</span> x = [<span class="fl">7.169890</span> ,<span class="fl">2.188864</span> , <span class="fl">2.963868</span> ,<span class="fl">7.790631</span> ,<span class="fl">2.474261</span> ,<span class="fl">7.694849</span> ,<span class="fl">1.585007</span> ,<span class="fl">4.087697</span> ,<span class="fl">3.051643</span> ,<span class="fl">4.697559</span>];
+<span class="co">// y = rnorm(10, 4,2)</span>
+<span class="kw">var</span> y = [<span class="fl">4.9627295</span>,<span class="fl">6.0336209</span>,-<span class="fl">0.4610221</span>,<span class="fl">7.3744023</span>,<span class="fl">2.4804347</span>,<span class="fl">7.2053190</span>,<span class="fl">3.5558563</span>,<span class="fl">3.6505476</span>,<span class="fl">2.2200754</span>,<span class="fl">5.3021459</span>];
+<span class="co">// py = x + rnorm(10, 1, 2)</span>
+<span class="kw">var</span> py= [<span class="fl">9.829046</span> ,<span class="fl">2.491387</span> ,<span class="fl">6.037504</span>  ,<span class="fl">5.709755</span> ,<span class="fl">5.461208</span> ,<span class="fl">7.345603</span> ,<span class="fl">3.040538</span> ,<span class="fl">4.856838</span> ,<span class="fl">3.195437</span> ,<span class="fl">7.079105</span>];
+
+<span class="fu">log</span>(<span class="st">&quot;x=&quot;</span>+<span class="fu">str</span>(x));
+<span class="fu">log</span>(<span class="st">&quot;y=&quot;</span>+<span class="fu">str</span>(y));
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">mu</span>:<span class="dv">6</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/* </span>
+<span class="co">&gt; t.test(x, mu=6, alpha=0.05)</span>
+
+<span class="co">        One Sample t-test</span>
+
+<span class="co">data:  x</span>
+<span class="co">t = -2.1732, df = 9, p-value = 0.05781</span>
+<span class="co">alternative hypothesis: true mean is not equal to 6</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 2.674155 6.066699</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of x </span>
+<span class="co"> 4.370427 */</span>
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">mu</span>:<span class="dv">6</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;&lt;&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; t.test(x, mu=6, alternative=&quot;greater&quot;)</span>
+
+<span class="co">        One Sample t-test</span>
+
+<span class="co">data:  x</span>
+<span class="co">t = -2.1732, df = 9, p-value = 0.9711</span>
+<span class="co">alternative hypothesis: true mean is greater than 6</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 2.995873      Inf</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of x </span>
+<span class="co"> 4.370427 </span>
+<span class="co">*/</span>
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">mu</span>:<span class="dv">6</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;&gt;&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; t.test(x, mu=6, alternative=&quot;less&quot;)</span>
+
+<span class="co">        One Sample t-test</span>
+
+<span class="co">data:  x</span>
+<span class="co">t = -2.1732, df = 9, p-value = 0.02891</span>
+<span class="co">alternative hypothesis: true mean is less than 6</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co">     -Inf 5.744981</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of x </span>
+<span class="co"> 4.370427 </span>
+<span class="co">*/</span>
+
+<span class="fu">ztest</span>({<span class="dt">x</span>:x, <span class="dt">mu</span>:<span class="dv">6</span>, <span class="dt">sd</span>:<span class="fl">2.5</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">y</span>:y, <span class="dt">mu</span>:<span class="dv">1</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">varequal</span>:<span class="kw">true</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; t.test(x, y, mu=1, conf.level=0.95, var.equal=T, alternative=&quot;two.sided&quot;);</span>
+
+<span class="co">        Two Sample t-test</span>
+
+<span class="co">data:  x and y</span>
+<span class="co">t = -0.8012, df = 18, p-value = 0.4335</span>
+<span class="co">alternative hypothesis: true difference in means is not equal to 1</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> -2.122363  2.398395</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of x mean of y </span>
+<span class="co"> 4.370427  4.232411 */</span>
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">y</span>:py, <span class="dt">mu</span>:-<span class="dv">1</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">paired</span>:<span class="kw">true</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; t.test(x, py, mu=-1, conf.level=0.95, paired=T)</span>
+
+<span class="co">        Paired t-test</span>
+
+<span class="co">data:  x and py</span>
+<span class="co">t = -0.252, df = 9, p-value = 0.8067</span>
+<span class="co">alternative hypothesis: true difference in means is not equal to -1</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> -2.33885689  0.07042649</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of the differences </span>
+<span class="co">              -1.134215 */</span>
+
+<span class="fu">ttest</span>({<span class="dt">x</span>:x, <span class="dt">y</span>:y, <span class="dt">mu</span>:<span class="dv">1</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; t.test(x, y, mu=1, conf.level=0.95, alternative=&quot;two.sided&quot;);</span>
+
+<span class="co">        Welch Two Sample t-test</span>
+
+<span class="co">data:  x and y</span>
+<span class="co">t = -0.8012, df = 17.985, p-value = 0.4335</span>
+<span class="co">alternative hypothesis: true difference in means is not equal to 1</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> -2.122495  2.398527</span>
+<span class="co">sample estimates:</span>
+<span class="co">mean of x mean of y </span>
+<span class="co"> 4.370427  4.232411 </span>
+<span class="co">*/</span>
+
+<span class="fu">ftest</span>({<span class="dt">x</span>:x, <span class="dt">y</span>:y}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; var.test(x,y)</span>
+
+<span class="co">        F test to compare two variances</span>
+
+<span class="co">data:  x and y</span>
+<span class="co">F = 0.9445, num df = 9, denom df = 9, p-value = 0.9337</span>
+<span class="co">alternative hypothesis: true ratio of variances is not equal to 1</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 0.2346094 3.8026974</span>
+<span class="co">sample estimates:</span>
+<span class="co">ratio of variances </span>
+<span class="co">         0.9445362 </span>
+<span class="co">*/</span>
+
+<span class="kw">var</span> vx = [<span class="dv">175</span>, <span class="dv">176</span>, <span class="dv">173</span>, <span class="dv">175</span>, <span class="dv">174</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">176</span>, <span class="dv">173</span>, <span class="dv">179</span>];
+<span class="fu">vartest</span>({<span class="dt">x</span>:vx, <span class="dt">sd</span>:<span class="dv">2</span>, <span class="dt">alpha</span>:<span class="fl">0.05</span>, <span class="dt">op</span>:<span class="st">&quot;=&quot;</span>}).<span class="fu">report</span>();
+<span class="co">// R 軟體沒有此函數，測試請看湯銀才 143 頁</span>
+<span class="co">// 信賴區間 (1.793, 12.628)</span>
+
+<span class="fu">binomtest</span>({<span class="dt">x</span>:<span class="dv">7</span>, <span class="dt">n</span>:<span class="dv">12</span>, <span class="dt">p</span>:<span class="fl">0.4</span>, <span class="dt">op</span>:<span class="st">&quot;&gt;&quot;</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; binom.test(x=7, n=12, p=0.4, alternative=&quot;less&quot;)</span>
+
+<span class="co">        Exact binomial test</span>
+
+<span class="co">data:  7 and 12</span>
+<span class="co">number of successes = 7, number of trials = 12, p-value = 0.9427</span>
+<span class="co">alternative hypothesis: true probability of success is less than 0.4</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 0.0000000 0.8189752</span>
+<span class="co">sample estimates:</span>
+<span class="co">probability of success </span>
+<span class="co">             0.5833333 </span>
+<span class="co">*/</span>
+
+<span class="fu">binomtest</span>({<span class="dt">x</span>:<span class="dv">7</span>, <span class="dt">n</span>:<span class="dv">12</span>, <span class="dt">p</span>:<span class="fl">0.4</span>, <span class="dt">op</span>:<span class="st">&quot;&lt;&quot;</span>}).<span class="fu">report</span>();
+<span class="co">/*</span>
+<span class="co">&gt; binom.test(x=7, n=12, p=0.4, alternative=&quot;greater&quot;)</span>
+
+<span class="co">        Exact binomial test</span>
+
+<span class="co">data:  7 and 12</span>
+<span class="co">number of successes = 7, number of trials = 12, p-value = 0.1582</span>
+<span class="co">alternative hypothesis: true probability of success is greater than 0.4</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 0.3152378 1.0000000</span>
+<span class="co">sample estimates:</span>
+<span class="co">probability of success </span>
+<span class="co">             0.5833333 </span>
+<span class="co">*/</span>
+
+
+
+<span class="fu">binomtest</span>({<span class="dt">x</span>:<span class="dv">7</span>, <span class="dt">n</span>:<span class="dv">12</span>, <span class="dt">p</span>:<span class="fl">0.4</span>}).<span class="fu">report</span>(); <span class="co">// 有誤，p-value 與 R 不同</span>
+
+<span class="co">/*</span>
+<span class="co">&gt; binom.test(x=7, n=12, p=0.4)</span>
+
+<span class="co">        Exact binomial test</span>
+
+<span class="co">data:  7 and 12</span>
+<span class="co">number of successes = 7, number of trials = 12, p-value = 0.2417 ==&gt; R.js ??? error : pvalue  : 0.1146</span>
+<span class="co">alternative hypothesis: true probability of success is not equal to 0.4</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 0.2766697 0.8483478</span>
+<span class="co">sample estimates:</span>
+<span class="co">probability of success </span>
+<span class="co">             0.5833333 </span>
+<span class="co">*/</span>
+
+
+<span class="fu">proptest</span>({<span class="dt">x</span>:<span class="dv">91</span>, <span class="dt">n</span>:<span class="dv">100</span>, <span class="dt">p</span>:<span class="fl">0.9</span>, <span class="dt">correct</span>:<span class="kw">false</span>}).<span class="fu">report</span>();
+
+<span class="co">/*  1-sample proportions test without continuity correction</span>
+
+<span class="co">data:  91 out of 100, null probability 0.9</span>
+<span class="co">X-squared = 0.1111, df = 1, p-value = 0.7389</span>
+<span class="co">alternative hypothesis: true p is not equal to 0.9</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> 0.8377379 0.9519275</span>
+<span class="co">sample estimates:</span>
+<span class="co">   p </span>
+<span class="co">0.91 */</span>
+
+<span class="fu">proptest</span>({<span class="dt">x</span>:<span class="dv">23</span>, <span class="dt">n1</span>:<span class="dv">102</span>, <span class="dt">y</span>:<span class="dv">25</span>, <span class="dt">n2</span>:<span class="dv">135</span>, <span class="dt">correct</span>:<span class="kw">false</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; success = c(23, 25)</span>
+<span class="co">&gt; total = c(102, 135)</span>
+<span class="co">&gt; prop.test(success, total)</span>
+
+<span class="co">        2-sample test for equality of proportions with continuity correction</span>
+
+<span class="co">data:  success out of total</span>
+<span class="co">X-squared = 0.3615, df = 1, p-value = 0.5477</span>
+<span class="co">alternative hypothesis: two.sided</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> -0.07256476  0.15317478</span>
+<span class="co">sample estimates:</span>
+<span class="co">   prop 1    prop 2 </span>
+<span class="co">0.2254902 0.1851852 </span>
+<span class="co">*/</span>
+
+<span class="fu">proptest</span>({<span class="dt">x</span>:<span class="dv">8</span>, <span class="dt">n1</span>:<span class="dv">100</span>, <span class="dt">y</span>:<span class="dv">12</span>, <span class="dt">n2</span>:<span class="dv">200</span>, <span class="dt">op</span>:<span class="st">&quot;&lt;&quot;</span>, <span class="dt">correct</span>:<span class="kw">false</span>}).<span class="fu">report</span>();
+
+<span class="co">/*</span>
+<span class="co">&gt; prop.test(c(8,12), c(100,200), alternative=&quot;greater&quot;, correct=F)</span>
+
+<span class="co">        2-sample test for equality of proportions without continuity</span>
+<span class="co">        correction</span>
+
+<span class="co">data:  c(8, 12) out of c(100, 200)</span>
+<span class="co">X-squared = 0.4286, df = 1, p-value = 0.2563</span>
+<span class="co">alternative hypothesis: greater</span>
+<span class="co">95 percent confidence interval:</span>
+<span class="co"> -0.03248088  1.00000000 =&gt; R.js ??? [-0.0303,Infinity]</span>
+<span class="co">sample estimates:</span>
+<span class="co">prop 1 prop 2 </span>
+<span class="co">  0.08   0.06 </span>
+<span class="co">*/</span></code></pre>
+<p>執行結果</p>
+<pre><code>D:\Dropbox\Public\jslab\test&gt;node rtest
+use ../source/R name=R
+use ../js/jstat.js name=jStat
+x=[7.1699,2.1889,2.9639,7.7906,2.4743,7.6948,1.585,4.0877,3.0516,4.6976]
+y=[4.9627,6.0336,-0.461,7.3744,2.4804,7.2053,3.5559,3.6505,2.2201,5.3021]
+=========== report ==========
+name    : &quot;ttest(X)&quot;
+h       : &quot;H0:mu=6&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.0578
+ci      : [2.6742,6.0667]
+df      : 9
+mean    : 4.3704
+sd      : 2.3712
+=========== report ==========
+name    : &quot;ttest(X)&quot;
+h       : &quot;H0:mu&lt;6&quot;
+alpha   : 0.05
+op      : &quot;&lt;&quot;
+pvalue  : 0.9711
+ci      : [2.9959,Infinity]
+df      : 9
+mean    : 4.3704
+sd      : 2.3712
+=========== report ==========
+name    : &quot;ttest(X)&quot;
+h       : &quot;H0:mu&gt;6&quot;
+alpha   : 0.05
+op      : &quot;&gt;&quot;
+pvalue  : 0.0289
+ci      : [-Infinity,5.745]
+df      : 9
+mean    : 4.3704
+sd      : 2.3712
+=========== report ==========
+name    : &quot;ztest(X)&quot;
+h       : &quot;H0:mu=6 when sd=2.5&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.0393
+ci      : [2.9008,5.8401]
+df      : 10
+=========== report ==========
+name    : &quot;ttest(X,Y,mu=1,varequal=true) (pooled)&quot;
+h       : &quot;H0:mu1=mu2&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.4335
+ci      : [-2.1224,2.3984]
+df      : 18
+mean    : &quot;mean(x)=4.3704 mean(y)=4.2324&quot;
+sd      : &quot;sd(x)=2.3712 sd(y)=2.4399&quot;
+=========== report ==========
+name    : &quot;ttest(x,y,mu=-1,paired=true)&quot;
+h       : &quot;H0:mu1=mu2&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.8067
+ci      : [-2.3389,0.0704]
+df      : 9
+mean    : &quot;mean(x-y)=-1.1342&quot;
+sd      : &quot;sd(x-y)=1.684&quot;
+=========== report ==========
+name    : &quot;ttest(x,y,mu=1,varequal=false), Welch t-test&quot;
+h       : &quot;H0:mu1=mu2&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.4335
+ci      : [-2.1225,2.3985]
+df      : 17.9854
+mean    : &quot;mean(x)=4.3704 mean(y)=4.2324&quot;
+sd      : &quot;sd(x)=2.3712 sd(y)=2.4399&quot;
+=========== report ==========
+name    : &quot;ftest(X, Y)&quot;
+h       : &quot;H0:σ1/σ2=1&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.9337
+ci      : [0.2346,3.8027]
+df      : [9,9]
+ratio   : 0.9445
+=========== report ==========
+name    : &quot;chisqtest(X)&quot;
+h       : &quot;H0:σ1=σ&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.9644
+ci      : [1.7926,12.6278]
+df      : 9
+=========== report ==========
+name    : &quot;binomtest({x:7,n:12,p:0.4,op:&quot;&gt;&quot;})&quot;
+h       : &quot;H0:p&gt;0.4&quot;
+alpha   : 0.05
+op      : &quot;&gt;&quot;
+pvalue  : 0.9427
+ci      : [0,0.819]
+df      : 1
+p       : 0.5833
+=========== report ==========
+name    : &quot;binomtest({x:7,n:12,p:0.4,op:&quot;&lt;&quot;})&quot;
+h       : &quot;H0:p&lt;0.4&quot;
+alpha   : 0.05
+op      : &quot;&lt;&quot;
+pvalue  : 0.1582
+ci      : [0.3152,1]
+df      : 1
+p       : 0.5833
+=========== report ==========
+name    : &quot;binomtest({x:7,n:12,p:0.4})&quot;
+h       : &quot;H0:p=0.4&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.2417
+ci      : [0.2767,0.8483]
+df      : 1
+p       : 0.5833
+=========== report ==========
+name    : &quot;proptest({x:91,n:100,p:0.9,correct:false}), zprop1&quot;
+h       : &quot;H0:p=0.9&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.7389
+ci      : [0.8377,0.9519]
+df      : 1
+p       : 0.91
+=========== report ==========
+name    : &quot;proptest({x:23,n1:102,y:25,n2:135,correct:false,p:0.5}), zprop2&quot;
+h       : &quot;H0:p1-p2=0&quot;
+alpha   : 0.05
+op      : &quot;=&quot;
+pvalue  : 0.4446
+ci      : [-0.063,0.1436]
+df      : 1
+p       : [0.2255,0.1852]
+=========== report ==========
+name    : &quot;proptest({x:8,n1:100,y:12,n2:200,op:&quot;&lt;&quot;,correct:false,p:0.5}), zprop2
+&quot;
+h       : &quot;H0:p1-p2&lt;0&quot;
+alpha   : 0.05
+op      : &quot;&lt;&quot;
+pvalue  : 0.2563
+ci      : [-0.0303,Infinity]
+df      : 1
+p       : [0.08,0.06]</code></pre>
+<h2 id="jslab-科學計算平台背後的開放原始碼結構"><a href="#jslab-科學計算平台背後的開放原始碼結構">「JsLab 科學計算平台」背後的開放原始碼結構</a></h2>
+<p>為了要用 JavaScript 建構出科學計算平台，我們創建了以下的 JsLab 開放原始碼專案。</p>
+<ul>
+<li><a href="https://github.com/ccckmit/jslab/tree/gh-pages">https://github.com/ccckmit/jslab/tree/gh-pages</a></li>
+</ul>
+<p>我們大量的採用了 JavaScript 的開放原始碼函式庫，像是在「機率統計」領域採用了 jStat 這個專案，在繪圖領域採用了 d3.js、c3.js、vis.js 等等，這些專案的網址如下。</p>
+<ul>
+<li><a href="http://d3js.org/">http://d3js.org/</a></li>
+<li><a href="http://c3js.org/">http://c3js.org/</a></li>
+<li><a href="http://visjs.org/">http://visjs.org/</a></li>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+</ul>
+<p>JsLab 科學計算平台的核心，是一組基於 jStat 專案的重新封裝，我們將 jStat 重新封裝成類似 R 函式庫的介面，並且加上了一些 jStat 當中所沒有的功能，特別是統計檢定的部份，形成了 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js">R.js</a> 這個 JavaScript 程式，讓 JavaScript 也能擁有類似 R 軟體的機率統計函式庫。</p>
+<p>我們雖然使用了 d3.js 這個繪圖函式庫進行 2D 繪圖，但由於 d3.js 並不容易使用，所以我們採用了 c3.js 這個基於 d3 的延伸套件，簡化 d3 繪圖函式庫的使用，讓我們不需瞭解太多繪圖的細節就能寫出 JsLab 的繪圖函式庫。</p>
+<p>舉例而言、下列的圖形就是依靠 c3.js 所繪製的，只不過我們將 c3.js 進一步封裝到 JsLab 的 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a> 這個的繪圖函式庫當中而已。</p>
+<div class="figure">
+<img src="../img/jsLabC3Graph.jpg" />
+</div>
+<p>以下是我們將 c3.js 重新封裝成 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a> 的程式碼片段。</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> C3G=<span class="kw">function</span>() {
+  <span class="kw">this</span>.<span class="fu">g</span> = {
+        <span class="dt">data</span>: {
+          <span class="dt">xs</span>: {},
+          <span class="dt">columns</span>: [ <span class="co">/*[&quot;x&quot;, 1, 2, 3, 4 ]*/</span> ],
+          <span class="dt">type</span>: <span class="st">&quot;line&quot;</span>, 
+          <span class="dt">types </span>: {}
+        },
+        <span class="dt">axis</span>: {
+          <span class="dt">x</span>: {
+            <span class="dt">label</span>: <span class="st">&#39;X&#39;</span>,
+            <span class="dt">tick</span>: { <span class="dt">fit</span>: <span class="kw">false</span>, <span class="dt">format</span>:<span class="ot">d3</span>.<span class="fu">format</span>(<span class="st">&quot;.2f&quot;</span>) }
+          },
+          <span class="dt">y</span>: { <span class="dt">label</span>: <span class="st">&#39;Y&#39;</span>, 
+            <span class="dt">tick </span>: { <span class="dt">format</span>: <span class="ot">d3</span>.<span class="fu">format</span>(<span class="st">&quot;.2f&quot;</span>) }
+          }
+        }, 
+        <span class="dt">bar</span>: { <span class="dt">width</span>: { <span class="dt">ratio</span>: <span class="fl">0.9</span> } }, 
+      };
+  <span class="kw">this</span>.<span class="fu">varcount</span> = <span class="dv">0</span>;
+  <span class="kw">this</span>.<span class="fu">xrange</span>(-<span class="dv">10</span>, <span class="dv">10</span>);
+  <span class="kw">this</span>.<span class="fu">step</span> = <span class="dv">1</span>;
+  <span class="kw">this</span>.<span class="fu">setrange</span> = <span class="kw">false</span>;
+}
+....
+<span class="ot">C3G</span>.<span class="ot">prototype</span>.<span class="fu">hist</span> = <span class="kw">function</span>(x, options) {
+  <span class="kw">var</span> name = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;name&quot;</span>, <span class="kw">this</span>.<span class="fu">tempvar</span>()); 
+  <span class="kw">var</span> mode = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;mode&quot;</span>, <span class="st">&quot;&quot;</span>); 
+  <span class="kw">var</span> step = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;step&quot;</span>, <span class="kw">this</span>.<span class="fu">step</span>); 
+  <span class="kw">var</span> from = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;from&quot;</span>, <span class="kw">this</span>.<span class="fu">xmin</span>); 
+  <span class="kw">var</span> to   = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;to&quot;</span>, <span class="kw">this</span>.<span class="fu">xmax</span>);
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="fu">types</span>[name] = <span class="st">&quot;bar&quot;</span>;
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="fu">xs</span>[name] = name+<span class="st">&quot;x&quot;</span>;
+  <span class="kw">var</span> xc = <span class="ot">R</span>.<span class="fu">steps</span>(from+step/<span class="fl">2.0</span>, to, step);
+  <span class="kw">var</span> n = (to-from)/step + <span class="dv">1</span>;
+  <span class="kw">var</span> count = <span class="ot">R</span>.<span class="fu">repeats</span>(<span class="dv">0</span>, n);
+  <span class="kw">for</span> (<span class="kw">var</span> i <span class="kw">in</span> x) {
+    <span class="kw">var</span> slot=<span class="ot">Math</span>.<span class="fu">floor</span>((x[i]-from)/step);
+    <span class="kw">if</span> (slot&gt;=<span class="dv">0</span> &amp;&amp; slot &lt; n)
+      count[slot]++;
+  }
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="ot">columns</span>.<span class="fu">push</span>([name+<span class="st">&quot;x&quot;</span>].<span class="fu">concat</span>(xc));
+  <span class="kw">var</span> total = <span class="ot">R</span>.<span class="fu">sum</span>(count);
+  <span class="kw">if</span> (mode === <span class="st">&quot;normalized&quot;</span>)
+    count = <span class="ot">R</span>.<span class="fu">apply</span>(count, <span class="kw">function</span>(c) { <span class="kw">return</span> (<span class="fl">1.0</span>/step)*(c/total); });
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="ot">columns</span>.<span class="fu">push</span>([name].<span class="fu">concat</span>(count));
+}
+...
+<span class="ot">C3G</span>.<span class="ot">prototype</span>.<span class="fu">show</span> = <span class="kw">function</span>() {
+  <span class="kw">if</span> (<span class="kw">typeof</span>(module)===<span class="st">&quot;undefined&quot;</span>)
+    <span class="kw">return</span> <span class="ot">c3</span>.<span class="fu">generate</span>(<span class="kw">this</span>.<span class="fu">g</span>);
+}</code></pre>
+<p>另外、由於 d3.js 並沒有支援 3D 曲面圖形的繪製，所以我們又引入了 vis.js 這個繪圖函式庫來完成 3D 圖形的繪製工作。</p>
+<p>以下是我們將 vis.js 封裝成 G.js 的程式碼片段</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">VISG</span>.<span class="ot">prototype</span>.<span class="fu">curve3d</span> = <span class="kw">function</span>(f, box) {
+  <span class="co">// Create and populate a data table.</span>
+  <span class="kw">var</span> data = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">DataSet</span>();
+  <span class="co">// create some nice looking data with sin/cos</span>
+  <span class="kw">var</span> counter = <span class="dv">0</span>;
+  <span class="kw">var</span> steps = <span class="dv">50</span>;  <span class="co">// number of datapoints will be steps*steps</span>
+  <span class="kw">var</span> axisMax = <span class="dv">314</span>;
+  <span class="kw">var</span> axisStep = axisMax / steps;
+  <span class="kw">for</span> (<span class="kw">var</span> x = <span class="dv">0</span>; x &lt; axisMax; x+=axisStep) {
+    <span class="kw">for</span> (<span class="kw">var</span> y = <span class="dv">0</span>; y &lt; axisMax; y+=axisStep) {
+      <span class="kw">var</span> value = <span class="fu">f</span>(x,y);
+      <span class="ot">data</span>.<span class="fu">add</span>({<span class="dt">id</span>:counter++,<span class="dt">x</span>:x,<span class="dt">y</span>:y,<span class="dt">z</span>:value,<span class="dt">style</span>:value});
+    }
+  }
+  <span class="kw">this</span>.<span class="fu">graph</span> = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Graph3d</span>(box, data, <span class="kw">this</span>.<span class="fu">options</span>);
+}
+...
+<span class="ot">G</span>.<span class="fu">curve3d</span> = <span class="kw">function</span>(f) {
+  <span class="ot">G</span>.<span class="ot">visg</span>.<span class="fu">curve3d</span>(f, <span class="ot">G</span>.<span class="fu">box</span>);
+}</code></pre>
+<p>接著、為了讓使用者編輯程式可以更容易，我們採用了這個 JavaScript 開源線上編輯器專案，該專案之援類似微軟 Visual Studio 的 IntelliSense 這樣的函數提示功能，</p>
+<ul>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+</ul>
+<div class="figure">
+<img src="../img/JsLabIntelliSense.jpg" alt="圖、JsLab 當中的程式碼上色與 IntelliSense 功能" /><p class="caption">圖、JsLab 當中的程式碼上色與 IntelliSense 功能</p>
+</div>
+<p>以下是我們將 codemirror 封裝成 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/E.js">E.js</a> (Editor) 的完整程式碼。</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/E.js">E.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span>;
+
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/lib/codemirror.js&quot;</span>, <span class="st">&quot;CodeMirror&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/addon/hint/show-hint.js&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/addon/hint/javascript-hint.js&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/mode/javascript/javascript.js&quot;</span>);
+
+E = {};
+
+<span class="kw">if</span> (<span class="kw">typeof</span> module!==<span class="st">&quot;undefined&quot;</span>) <span class="ot">module</span>.<span class="fu">exports</span> = E;
+
+<span class="ot">E</span>.<span class="fu">editor</span> = <span class="kw">null</span>;
+
+<span class="ot">E</span>.<span class="fu">loadEditor</span> = <span class="kw">function</span>(codebox) {
+  <span class="ot">E</span>.<span class="fu">codebox</span> = codebox;
+  <span class="ot">E</span>.<span class="fu">editor</span> = <span class="ot">CodeMirror</span>.<span class="fu">fromTextArea</span>(codebox, {
+    <span class="dt">lineNumbers</span>: <span class="kw">true</span>,
+    <span class="dt">extraKeys</span>: {<span class="st">&quot;Ctrl-.&quot;</span>: <span class="st">&quot;autocomplete&quot;</span>},
+    <span class="dt">lineWrapping</span>: <span class="kw">true</span>, 
+    <span class="dt">styleActiveLine</span>: <span class="kw">true</span>,
+    <span class="dt">mode</span>: {<span class="dt">name</span>: <span class="st">&quot;javascript&quot;</span>, <span class="dt">globalVars</span>: <span class="kw">true</span>}
+  });
+  
+  <span class="ot">E</span>.<span class="ot">editor</span>.<span class="fu">on</span>(<span class="st">&#39;update&#39;</span>, <span class="kw">function</span>(instance){
+    <span class="ot">E</span>.<span class="ot">codebox</span>.<span class="fu">value</span> = <span class="ot">instance</span>.<span class="fu">getValue</span>();
+  });  
+}</code></pre>
+<p>未來、我們可能會進一步整合更多的函式庫，目前預計在「矩陣運算領域」會採用了 jStat 與 numeric.js 等函式庫，而在數位訊號語音處理領域可能會採用 DSP.js，影像處理領域可能採用 CamanJS 等等，這些函式庫的網址如下：</p>
+<ul>
+<li><a href="http://numericjs.com/">http://numericjs.com/</a></li>
+<li><a href="https://github.com/corbanbrook/dsp.js/">https://github.com/corbanbrook/dsp.js/</a></li>
+<li><a href="http://camanjs.com/">http://camanjs.com/</a></li>
+</ul>
+<p>目前、網路上的 JavaScript 的函式庫還持續的急速增長中，我們相信之後會有更多更好用的 JavaScript 科學計算函式庫出現，我們只要能將這些好用的函式庫整合進來，就能創建一個完整的科學計算平台了，而這也正是 JsLab 計劃所想要達成的目標。</p>
+<p>由於 JavaScript 是瀏覽器當中唯一能使用的官方語言，因此我們認為未來 JavaScript 的發揮空間將會越來越大，就像 Jeff Atwood 在 2007 年所提出的 Atwood's Law 所說的：</p>
+<blockquote>
+<p>Any application that can be written in JavaScript, will eventually be written in JavaScript.</p>
+</blockquote>
+<p>換句話說 -- 「任何可以寫成 JavaScript 的應用程式，最後都會被寫成 JavaScript」。</p>
+<p>如果 Atwood's Law 成立的話，那基於 JavaScript 的科學計算平台就應該要出現啊！</p>
+<p>我們正在以行動來實現 Atwood 的話，這個行動的代號就是 JsLab 。</p>
+<h3 id="參考文獻"><a href="#參考文獻">參考文獻</a></h3>
+<ul>
+<li><a href="http://www.iterduo.com/0401-atwood.html">Atwood定律：“任何可以使用JavaScript来编写的应用，最终会由JavaScript编写。”</a></li>
+</ul>
+<h2 id="r.js----從-jstat-延伸出的開源-javascript-機率統計框架"><a href="#r.js----從-jstat-延伸出的開源-javascript-機率統計框架">R.js -- 從 jStat 延伸出的開源 JavaScript 機率統計框架</a></h2>
+<p>我自從開始用 R 學習機率統計之後，就覺得這樣的科學計算平台真的很棒。</p>
+<p>但可惜的是、我現在所使用的主力語言是 JavaScript，因為 JavaScript 是瀏覽器的唯一語言，而且有了 node.js 這樣的平台之後，可以通吃客戶端與伺服端兩方的應用。</p>
+<p>於是我想要用 JavaScript 創造出一個類似 R 的環境，並且可以在 Web 上執行，所以就創造了 jsLab 專案。</p>
+<p>但是、為了讓 jsLab 能支援那些機率統計功能，我必須尋找用 JavaScript 語言撰寫的機率統計函式庫。</p>
+<p>在 2012 年我就注意到了 jStat 這個支援機率模型的函式庫，當時這個函式庫還有專屬的網站，但是現在這個函式庫連網站都不見了，還好在 github 裏還有一份原始碼，網址如下：</p>
+<ul>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+</ul>
+<p>jStat 在機率模型的部分支援還算完整，但是在統計檢定的部分就相當薄弱，雖然也支援矩陣運算等功能，但是在 JavaScript 語言上， jStat 的矩陣運算支援並不算特別好的。</p>
+<p>因此、我們決定將 jStat 重新包裝，成為一個新的 javascript 檔案，稱為 R.js ，這是 jsLab 專案的主要程式碼之一， R.js 的網址如下。</p>
+<ul>
+<li><a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js">https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js</a></li>
+</ul>
+<p>您可以看到在 R.js 檔案裏，能夠呼叫 jStat 完成的部分，我們都盡可能的交給 jStat 來做，而 jStat 在這部份也確實做得很不錯。</p>
+<p>檔案： R.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="co">// 均等分布</span>
+<span class="ot">R</span>.<span class="fu">runif</span>=<span class="kw">function</span>(n, a, b) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">sample</span>, a, b); }
+<span class="ot">R</span>.<span class="fu">dunif</span>=<span class="kw">function</span>(x, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">pdf</span>(x, a, b); }
+<span class="ot">R</span>.<span class="fu">punif</span>=<span class="kw">function</span>(q, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">cdf</span>(q, a, b); }
+<span class="ot">R</span>.<span class="fu">qunif</span>=<span class="kw">function</span>(p, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">inv</span>(p, a, b); }
+<span class="co">// 常態分布</span>
+<span class="ot">R</span>.<span class="fu">rnorm</span>=<span class="kw">function</span>(n, mean, sd) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">sample</span>, mean, sd); }
+<span class="ot">R</span>.<span class="fu">dnorm</span>=<span class="kw">function</span>(x, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">pdf</span>(x, mean, sd); }
+<span class="ot">R</span>.<span class="fu">pnorm</span>=<span class="kw">function</span>(q, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">cdf</span>(q, mean, sd); }
+<span class="co">// R.qnorm=function(p, mean, sd) { return R.q2x(p, function (q) { return R.pnorm(q, mean, sd);});}</span>
+<span class="ot">R</span>.<span class="fu">qnorm</span>=<span class="kw">function</span>(p, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">inv</span>(p, mean, sd); }
+<span class="co">// 布瓦松分布</span>
+<span class="ot">R</span>.<span class="fu">rpois</span>=<span class="kw">function</span>(n, l) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">sample</span>, l); }
+<span class="ot">R</span>.<span class="fu">dpois</span>=<span class="kw">function</span>(x, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">pdf</span>(x, l); }
+<span class="ot">R</span>.<span class="fu">ppois</span>=<span class="kw">function</span>(q, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">cdf</span>(q, l); }
+<span class="ot">R</span>.<span class="fu">qpois</span>=<span class="kw">function</span>(p, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">inv</span>(p, l); }
+
+<span class="co">// F 分布</span>
+<span class="ot">R</span>.<span class="fu">rf</span>=<span class="kw">function</span>(n, df1, df2) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">sample</span>, df1, df2); }
+<span class="ot">R</span>.<span class="fu">df</span>=<span class="kw">function</span>(x, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">pdf</span>(x, df1, df2); }
+<span class="ot">R</span>.<span class="fu">pf</span>=<span class="kw">function</span>(q, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">cdf</span>(q, df1, df2); }
+<span class="ot">R</span>.<span class="fu">qf</span>=<span class="kw">function</span>(p, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">inv</span>(p, df1, df2); }
+<span class="co">// T 分布</span>
+<span class="ot">R</span>.<span class="fu">rt</span>=<span class="kw">function</span>(n, dof) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">sample</span>, dof); }
+<span class="ot">R</span>.<span class="fu">dt</span>=<span class="kw">function</span>(x, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">pdf</span>(x, dof); }
+<span class="ot">R</span>.<span class="fu">pt</span>=<span class="kw">function</span>(q, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">cdf</span>(q, dof); }
+<span class="ot">R</span>.<span class="fu">qt</span>=<span class="kw">function</span>(p, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">inv</span>(p, dof); }
+...</code></pre>
+<p>不過、在離散的機率分布上面，jStat 就支援的比較不好，而且沒有支援像 inv 這類的函數，於是我們就得自己來補足，以下是我們用 jStat 與自己寫的程式所合成的一些離散分布原始碼。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">R</span>.<span class="fu">sample1</span>=<span class="kw">function</span>(a, p) { 
+  <span class="kw">var</span> r = <span class="ot">Math</span>.<span class="fu">random</span>();
+  <span class="kw">var</span> u = <span class="ot">R</span>.<span class="fu">repeats</span>(<span class="fl">1.0</span>, <span class="ot">a</span>.<span class="fu">length</span>);
+  p = <span class="ot">R</span>.<span class="fu">def</span>(p, <span class="ot">R</span>.<span class="fu">normalize</span>(u));
+  <span class="kw">var</span> psum = <span class="dv">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> i <span class="kw">in</span> p) {
+    psum += p[i];
+    <span class="kw">if</span> (psum &gt; r)
+      <span class="kw">return</span> a[i];
+  }
+  <span class="kw">return</span> <span class="kw">null</span>;
+}
+
+<span class="ot">R</span>.<span class="fu">sample</span>=<span class="kw">function</span>(x, n, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">R</span>.<span class="fu">sample1</span>, x, p); }
+
+<span class="co">// 二項分布</span>
+<span class="ot">R</span>.<span class="fu">rbinom</span>=<span class="kw">function</span>(n, N, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">sample</span>, N, p); }
+<span class="ot">R</span>.<span class="fu">dbinom</span>=<span class="kw">function</span>(x, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">pdf</span>(x, N, p); }
+<span class="ot">R</span>.<span class="fu">pbinom</span>=<span class="kw">function</span>(k, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">cdf</span>(k, N, p); }
+<span class="ot">R</span>.<span class="fu">qbinom</span>=<span class="kw">function</span>(q, N, p) { 
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;=N; i++) {
+    <span class="kw">if</span> (<span class="ot">R</span>.<span class="fu">pbinom</span>(i, N, p) &gt; q) <span class="kw">return</span> i;
+  }
+  <span class="kw">return</span> N;
+}
+
+<span class="co">// 負二項分布</span>
+<span class="ot">R</span>.<span class="fu">rnbinom</span>=<span class="kw">function</span>(n, N, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">sample</span>, N, p); }
+<span class="ot">R</span>.<span class="fu">dnbinom</span>=<span class="kw">function</span>(x, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">pdf</span>(x, N, p); }
+<span class="ot">R</span>.<span class="fu">pnbinom</span>=<span class="kw">function</span>(k, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">cdf</span>(k, N, p); }
+<span class="co">// R.qnbinom=function(p, N, q) { return jStat.negbin.inv(p, N, q); }</span>
+<span class="ot">R</span>.<span class="fu">qnbinom</span>=<span class="kw">function</span>(q, N, p) { 
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;N; i++) {
+    <span class="kw">if</span> (<span class="ot">R</span>.<span class="fu">pnbinom</span>(i, N, p) &gt; q) <span class="kw">return</span> i;
+  }
+  <span class="kw">return</span> N;
+}
+...</code></pre>
+<p>另外、由於 jStat 在統計檢定方面的函數也很薄弱，所以我們撰寫了以下這個檢定的抽象函數，實作時只要補足「 q2p, o2q, h, df」等函數，就可以做出一個檢定功能了。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">R</span>.<span class="fu">test</span> = <span class="kw">function</span>(o) { <span class="co">// name, D, x, mu, sd, y, alpha, op</span>
+  <span class="kw">var</span> D      = <span class="ot">o</span>.<span class="fu">D</span>;
+  <span class="kw">var</span> x      = <span class="ot">o</span>.<span class="fu">x</span>;
+  <span class="kw">var</span> alpha  = <span class="ot">R</span>.<span class="fu">opt</span>(o, <span class="st">&quot;alpha&quot;</span>, <span class="fl">0.05</span>);
+  <span class="ot">o</span>.<span class="fu">op</span>       = <span class="ot">R</span>.<span class="fu">opt</span>(o, <span class="st">&quot;op&quot;</span>, <span class="st">&quot;=&quot;</span>);
+  
+  <span class="kw">var</span> pvalue, interval;
+  <span class="kw">var</span> q1     = <span class="ot">D</span>.<span class="fu">o2q</span>(o); <span class="co">// 單尾檢定的 pvalue</span>
+  
+  <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;=&quot;</span>) {
+    <span class="kw">if</span> (q1&gt;<span class="fl">0.5</span>) q1 = <span class="dv">1</span>-q1; <span class="co">// (q1&gt;0.5) 取右尾，否則取左尾。</span>
+    pvalue= <span class="dv">2</span>*q1; <span class="co">// 對稱情況：雙尾檢定的 p 值是單尾的兩倍。</span>
+    interval = [<span class="ot">D</span>.<span class="fu">q2p</span>(alpha/<span class="dv">2</span>, o, <span class="st">&quot;L&quot;</span>), <span class="ot">D</span>.<span class="fu">q2p</span>(<span class="dv">1</span>-alpha/<span class="dv">2</span>, o, <span class="st">&quot;R&quot;</span>)];
+  } <span class="kw">else</span> {
+    <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;&lt;&quot;</span>) { <span class="co">// 右尾檢定 H0: q &lt; 1-alpha, </span>
+      interval = [ <span class="ot">D</span>.<span class="fu">q2p</span>(alpha, o, <span class="st">&quot;L&quot;</span>), <span class="kw">Infinity</span> ]; 
+      pvalue = <span class="dv">1</span>-q1;
+    }
+    <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;&gt;&quot;</span>) { <span class="co">// 左尾檢定 H0: q &gt; alpha</span>
+      interval=[-<span class="kw">Infinity</span>, <span class="ot">D</span>.<span class="fu">q2p</span>(<span class="dv">1</span>-alpha, o, <span class="st">&quot;R&quot;</span>)];
+      pvalue = q1;
+    }
+  }
+
+  <span class="kw">return</span> { <span class="dt">name</span>: <span class="ot">o</span>.<span class="fu">name</span>,
+           <span class="dt">h</span>: <span class="ot">D</span>.<span class="fu">h</span>(o),
+           <span class="dt">alpha</span>: alpha,
+           <span class="dt">op</span>: <span class="ot">o</span>.<span class="fu">op</span>, 
+           <span class="dt">pvalue</span>: pvalue, 
+           <span class="dt">ci </span>: interval, 
+           <span class="dt">df </span>: <span class="ot">D</span>.<span class="fu">df</span>(o),
+           <span class="dt">report</span>: <span class="kw">function</span>() { <span class="ot">R</span>.<span class="fu">report</span>(<span class="kw">this</span>) }
+           };
+}
+...</code></pre>
+<p>舉例而言，以下這個物件 t1 實作了 R.test 中所需要的函數，因此我們就可以透過「 <code>o.D = t1; t = R.test(o);</code> 這兩行指令呼叫 R.test 函數，完成單樣本的 t 檢定工作。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> t1 = { <span class="co">// 單樣本 T 檢定 t = (X-mu)/(S/sqrt(n))</span>
+  <span class="dt">h</span>:<span class="kw">function</span>(o) { <span class="kw">return</span> <span class="st">&quot;H0:mu&quot;</span>+<span class="ot">o</span>.<span class="fu">op</span>+<span class="ot">o</span>.<span class="fu">mu</span>; }, 
+  <span class="dt">o2q</span>:<span class="kw">function</span>(o) {
+    <span class="kw">var</span> x = <span class="ot">o</span>.<span class="fu">x</span>, n = <span class="ot">x</span>.<span class="fu">length</span>;
+    <span class="co">// t=(X-mu)/(sd/sqrt(n))</span>
+    <span class="kw">var</span> t = (<span class="ot">R</span>.<span class="fu">mean</span>(x)-<span class="ot">o</span>.<span class="fu">mu</span>)/(<span class="ot">R</span>.<span class="fu">sd</span>(x)/<span class="ot">Math</span>.<span class="fu">sqrt</span>(n)); 
+    <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">pt</span>(t, n<span class="dv">-1</span>);
+  },
+  <span class="co">// P(X-mu/(S/sqrt(n))&lt;t) = q ; 信賴區間 P(T&lt;q)</span>
+  <span class="co">// P(mu &gt; X-t*S/sqrt(n)) = q ; 這反而成了右尾檢定，所以左尾與右尾確實會反過來</span>
+  <span class="dt">q2p</span>:<span class="kw">function</span>(q, o) {
+    <span class="kw">var</span> x = <span class="ot">o</span>.<span class="fu">x</span>, n = <span class="ot">x</span>.<span class="fu">length</span>;
+    <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">mean</span>(x) + <span class="ot">R</span>.<span class="fu">qt</span>(q, n<span class="dv">-1</span>) * <span class="ot">R</span>.<span class="fu">sd</span>(x) / <span class="ot">Math</span>.<span class="fu">sqrt</span>(n);
+  },
+  <span class="dt">df</span>:<span class="kw">function</span>(o) { <span class="kw">return</span> <span class="ot">o</span>.<span class="ot">x</span>.<span class="fu">length</span><span class="dv">-1</span>; }
+}
+...
+<span class="ot">R</span>.<span class="fu">ttest</span> = <span class="kw">function</span>(o) { 
+  <span class="kw">var</span> t;
+  <span class="kw">if</span> (<span class="kw">typeof</span> <span class="ot">o</span>.<span class="fu">y</span> === <span class="st">&quot;undefined&quot;</span>) {
+    <span class="ot">o</span>.<span class="fu">name</span> = <span class="st">&quot;ttest(X)&quot;</span>;
+    <span class="ot">o</span>.<span class="fu">D</span> = t1;
+    t = <span class="ot">R</span>.<span class="fu">test</span>(o);
+    <span class="ot">t</span>.<span class="fu">mean</span> = <span class="ot">R</span>.<span class="fu">mean</span>(<span class="ot">o</span>.<span class="fu">x</span>);
+    <span class="ot">t</span>.<span class="fu">sd</span>   = <span class="ot">R</span>.<span class="fu">sd</span>(<span class="ot">o</span>.<span class="fu">x</span>);
+  } <span class="kw">else</span> {</code></pre>
+<p>目前我們已經在 R.js 中加入了大部份的機率分布、還有基本的「有母數」檢定功能，之後會再加入「無母數檢定的功能」。</p>
+<p>另外、我們也已經加入了基本的圖表繪製功能在 G.js 當中，於是形成了 jsLab 專案的基本架構，希望之後還能找到更多更棒的 JavaScript 科學計算函式庫，讓 JavaScript 語言也能 成為科學計算的良好平台。</p>
+<h3 id="參考文獻-1"><a href="#參考文獻-1">參考文獻</a></h3>
+<ul>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+<li><a href="https://github.com/ccckmit/jslab/tree/gh-pages">https://github.com/ccckmit/jslab/tree/gh-pages</a></li>
+</ul>
+<h1 id="程式人文集"><a href="#程式人文集">程式人文集</a></h1>
+<h2 id="d3.js----互動式繪圖框架"><a href="#d3.js----互動式繪圖框架">d3.js -- 互動式繪圖框架</a></h2>
+<p>d3.js 是一個在瀏覽器裏使用的互動式繪圖框架，使用 HTML、CSS、JavaScript 與 SVG (Scalable Vector Graphics) 等技術。</p>
+<p>d3.js 專案起始於 2011 年，是從 <a href="http://en.wikipedia.org/wiki/Protovis">Protovis</a> 專案修改過來的，通常我們會用 D3 來產生 SVG 或 CSS 的繪圖結果，在瀏覽器上檢視時還可以利用 SVG 或 CSS 與使用者進行互動。</p>
+<p>d3.js 的用法有點像 jQuery，都是透過選擇器來進行選取後操作的，舉例而言、下列指令可以選出所有 p 標記的節點並將顏色修改為 lavender (淡紫色、熏衣草)。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"> <span class="ot">d3</span>.<span class="fu">selectAll</span>(<span class="st">&quot;p&quot;</span>)
+   .<span class="fu">style</span>(<span class="st">&quot;color&quot;</span>, <span class="st">&quot;lavender&quot;</span>);</code></pre>
+<p>我們可以透過「標記 tag、類別 class、代號 identifier、屬性 attribute、或位置 place 來選取節點，然後進行新增、刪除、修改等動作，然後透過設定 CSS 的轉移 (transition) 屬性，讓繪圖的結果可以和使用者進行互動，舉例而言、以下程式就會讓網頁裡的 p 標記節點逐漸地改變為紫色。 (d3.js 預設的改變速度為 250ms 完成轉換)</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"> <span class="ot">d3</span>.<span class="fu">selectAll</span>(<span class="st">&quot;p&quot;</span>)
+   .<span class="fu">transition</span>()
+   .<span class="fu">style</span>(<span class="st">&quot;color&quot;</span>, <span class="st">&quot;pink&quot;</span>);</code></pre>
+<p>由於 SVG 裏的標記也是 HTML 的一部分， d3 的指令也可以選取 SVG 裏的內容，以下來自 <a href="http://bost.ocks.org/mike/">Mike Bostock</a> 網站的 <a href="http://bost.ocks.org/mike/circles/">範例</a> 顯示了這個狀況：</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;svg</span><span class="ot"> width=</span><span class="st">&quot;720&quot;</span><span class="ot"> height=</span><span class="st">&quot;120&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;circle</span><span class="ot"> cx=</span><span class="st">&quot;40&quot;</span><span class="ot"> cy=</span><span class="st">&quot;60&quot;</span><span class="ot"> r=</span><span class="st">&quot;10&quot;</span><span class="kw">&gt;&lt;/circle&gt;</span>
+  <span class="kw">&lt;circle</span><span class="ot"> cx=</span><span class="st">&quot;80&quot;</span><span class="ot"> cy=</span><span class="st">&quot;60&quot;</span><span class="ot"> r=</span><span class="st">&quot;10&quot;</span><span class="kw">&gt;&lt;/circle&gt;</span>
+  <span class="kw">&lt;circle</span><span class="ot"> cx=</span><span class="st">&quot;120&quot;</span><span class="ot"> cy=</span><span class="st">&quot;60&quot;</span><span class="ot"> r=</span><span class="st">&quot;10&quot;</span><span class="kw">&gt;&lt;/circle&gt;</span>
+<span class="kw">&lt;/svg&gt;</span>
+...
+<span class="kw">&lt;script&gt;</span>
+<span class="er">var circle = d3.selectAll(&quot;circle&quot;);</span>
+<span class="er">circle.style(&quot;fill&quot;, &quot;steelblue&quot;);</span>
+<span class="er">circle.attr(&quot;r&quot;, 30);</span>
+<span class="kw">&lt;/script&gt;</span></code></pre>
+<p>d3.js 的主要 API 包含下列幾類：</p>
+<ul>
+<li>Selections</li>
+<li>Transitions</li>
+<li>Arrays</li>
+<li>Math</li>
+<li>Color</li>
+<li>Scales</li>
+<li>SVG</li>
+<li>Time</li>
+<li>Layouts</li>
+<li>Geography</li>
+<li>Geometry</li>
+<li>Behaviors</li>
+</ul>
+<p>而以下的專案則是延伸自 d3.js 的套件，</p>
+<ul>
+<li><a href="http://freedatamap.com/">freeDataMap</a> - Company data visualisation tool</li>
+<li><a href="http://dimplejs.org/">dimple.js</a> - Flexible axis-based charting API</li>
+<li><a href="http://square.github.io/cubism/">Cubism</a> - Time series visualisation</li>
+<li><a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a> - Toolkit for creating interactive time series graphs</li>
+<li><a href="http://nvd3.org/">NVD3</a> - Re-usable charts for d3</li>
+<li><a href="http://square.github.io/crossfilter/">Crossfilter</a> - Fast Multidimensional Filtering for Coordinated Views</li>
+<li><a href="http://nickqizhu.github.io/dc.js/">dc.js</a> - Dimensional Charting Javascript Library</li>
+<li><a href="http://c3js.org/">c3.js</a> - D3-based reusable chart library</li>
+</ul>
+<p>甚至還有人專門為 d3.js 寫了一本書，而且這本書還有中文版。</p>
+<ul>
+<li><a href="http://www.books.com.tw/products/0010621239">網頁互動式資料視覺化：使用D3</a>, Scott Murray.</li>
+</ul>
+<h3 id="參考文獻-2"><a href="#參考文獻-2">參考文獻</a></h3>
+<ul>
+<li>Wikipedia: D3.js -- <a href="http://en.wikipedia.org/wiki/D3.js">http://en.wikipedia.org/wiki/D3.js</a></li>
+<li>Mike Bostock -- <a href="http://bost.ocks.org/mike/">http://bost.ocks.org/mike/</a></li>
+<li><a href="http://d3js.org/">http://d3js.org/</a></li>
+<li><a href="https://github.com/mbostock/d3/wiki/Gallery">D3 Gallery</a></li>
+</ul>
+<h2 id="c3.js----基於-d3.js-的簡易繪圖框架"><a href="#c3.js----基於-d3.js-的簡易繪圖框架">c3.js -- 基於 d3.js 的簡易繪圖框架</a></h2>
+<p>雖然 d3.js 很強大，但是卻並不容易使用，如果我們只是要畫一些簡易的圖形，可以採用延伸自 d3.js 的 c3.js 。</p>
+<p>C3.js 的使用非常的簡單，而且互動性很強大。舉例而言，以下是 C3.js 的一個範例，您將滑鼠游標移到圖形上，會顯示對應軸線的資料表格，這讓使用者可以很清楚的看到圖形所對應的數據，這是非常具有互動性的顯示方式。</p>
+<div class="figure">
+<img src="../img/c3chart.jpg" alt="圖、C3.js 的一個繪圖範例" /><p class="caption">圖、C3.js 的一個繪圖範例</p>
+</div>
+<p>您可以點選下列網址試試看這個範例，應該可以感覺到 C3.js 好用的地方。</p>
+<ul>
+<li><a href="http://c3js.org/samples/chart_combination.html">http://c3js.org/samples/chart_combination.html</a></li>
+</ul>
+<p>而且、要產生上述的圖形，也只需要短短幾行簡單的資料與程式，其程式碼如下所示：</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> chart = <span class="ot">c3</span>.<span class="fu">generate</span>({
+    <span class="dt">data</span>: {
+        <span class="dt">columns</span>: [
+            [<span class="st">&#39;data1&#39;</span>, <span class="dv">30</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">50</span>],
+            [<span class="st">&#39;data2&#39;</span>, <span class="dv">200</span>, <span class="dv">130</span>, <span class="dv">90</span>, <span class="dv">240</span>, <span class="dv">130</span>, <span class="dv">220</span>],
+            [<span class="st">&#39;data3&#39;</span>, <span class="dv">300</span>, <span class="dv">200</span>, <span class="dv">160</span>, <span class="dv">400</span>, <span class="dv">250</span>, <span class="dv">250</span>],
+            [<span class="st">&#39;data4&#39;</span>, <span class="dv">200</span>, <span class="dv">130</span>, <span class="dv">90</span>, <span class="dv">240</span>, <span class="dv">130</span>, <span class="dv">220</span>],
+            [<span class="st">&#39;data5&#39;</span>, <span class="dv">130</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">140</span>, <span class="dv">160</span>, <span class="dv">150</span>],
+            [<span class="st">&#39;data6&#39;</span>, <span class="dv">90</span>, <span class="dv">70</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">120</span>],
+        ],
+        <span class="dt">type</span>: <span class="st">&#39;bar&#39;</span>,
+        <span class="dt">types</span>: {
+            <span class="dt">data3</span>: <span class="st">&#39;spline&#39;</span>,
+            <span class="dt">data4</span>: <span class="st">&#39;line&#39;</span>,
+            <span class="dt">data6</span>: <span class="st">&#39;area&#39;</span>,
+        },
+        <span class="dt">groups</span>: [
+            [<span class="st">&#39;data1&#39;</span>,<span class="st">&#39;data2&#39;</span>]
+        ]
+    }
+});</code></pre>
+<p>從以上的範例中，您應該可以看到 C3 這個架構的優點，相較於 D3 而言， C3 容易使用多了。</p>
+<p>但是、 C3 並沒有辦法完全發揮 D3 的功能，像是筆者就沒看到 C3 具有任何可以繪製統計 box chart 的功能，因此對於某些較少見的情況而言，我們還是得直接採用 D3 ，另外 C3 的文件說明並不完整，這是筆者所看到的 C3 框架之缺陷。</p>
+<h3 id="參考文獻-3"><a href="#參考文獻-3">參考文獻</a></h3>
+<ul>
+<li><a href="http://c3js.org/">http://c3js.org/</a></li>
+</ul>
+<h2 id="vis.js----另一個強大的-javascript-繪圖函式庫"><a href="#vis.js----另一個強大的-javascript-繪圖函式庫">Vis.js -- 另一個強大的 JavaScript 繪圖函式庫</a></h2>
+<p>雖然前述的 d3.js 與 c3.js 可以做到繪圖功能，但是這兩個函式庫強調的是互動性介面，而不是繪圖功能的部份。</p>
+<p>於是、我找到了 vis.js 這個專注於繪圖的函式庫，這個函式庫雖然再互動性上表現得沒有 c3 那麼好，但是在繪圖功能上卻非常的完整，該有的圖型幾乎都有，特別是有關「 3D 地形圖」、「網路線圖」和的部份，是 C3 所不具備的功能，因此我們拿 vis.js 來繪製這兩類的圖形。</p>
+<p>您可以點選下列連結，看看 vis.js 的眾多範例，相信您會對這個繪圖框架感到印象深刻的。</p>
+<ul>
+<li><a href="http://visjs.org/#example">http://visjs.org/#example</a></li>
+</ul>
+<p>舉例而言、以下網頁是用來繪製 3D 地形圖的完整原始碼，</p>
+<p>網址：<a href="http://visjs.org/examples/graph3d/example01_basis.html">http://visjs.org/examples/graph3d/example01_basis.html</a></p>
+<div class="figure">
+<img src="../img/vis3D.jpg" alt="圖、用 Vis.js 繪製 3D 圖形" /><p class="caption">圖、用 Vis.js 繪製 3D 圖形</p>
+</div>
+<p>以下是上述範例的完整 HTML 檔案。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!DOCTYPE HTML PUBLIC <span class="st">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="st">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Graph 3D demo&lt;<span class="ot">/title&gt;</span>
+
+<span class="ot">  &lt;style&gt;</span>
+<span class="ot">    body {font: 10pt arial;}</span>
+<span class="ot">  &lt;/style</span>&gt;
+
+  &lt;script type=<span class="st">&quot;text/javascript&quot;</span> src=<span class="st">&quot;../../dist/vis.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot;&gt;</span>
+    <span class="kw">var</span> data = <span class="kw">null</span>;
+    <span class="kw">var</span> graph = <span class="kw">null</span>;
+
+    <span class="kw">function</span> <span class="fu">custom</span>(x, y) {
+      <span class="kw">return</span> (<span class="ot">Math</span>.<span class="fu">sin</span>(x/<span class="dv">50</span>) * <span class="ot">Math</span>.<span class="fu">cos</span>(y/<span class="dv">50</span>) * <span class="dv">50</span> + <span class="dv">50</span>);
+    }
+
+    <span class="co">// Called when the Visualization API is loaded.</span>
+    <span class="kw">function</span> <span class="fu">drawVisualization</span>() {
+      <span class="co">// Create and populate a data table.</span>
+      data = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">DataSet</span>();
+      <span class="co">// create some nice looking data with sin/cos</span>
+      <span class="kw">var</span> counter = <span class="dv">0</span>;
+      <span class="kw">var</span> steps = <span class="dv">50</span>;  <span class="co">// number of datapoints will be steps*steps</span>
+      <span class="kw">var</span> axisMax = <span class="dv">314</span>;
+      <span class="kw">var</span> axisStep = axisMax / steps;
+      <span class="kw">for</span> (<span class="kw">var</span> x = <span class="dv">0</span>; x &lt; axisMax; x+=axisStep) {
+        <span class="kw">for</span> (<span class="kw">var</span> y = <span class="dv">0</span>; y &lt; axisMax; y+=axisStep) {
+          <span class="kw">var</span> value = <span class="fu">custom</span>(x,y);
+          <span class="ot">data</span>.<span class="fu">add</span>({<span class="dt">id</span>:counter++,<span class="dt">x</span>:x,<span class="dt">y</span>:y,<span class="dt">z</span>:value,<span class="dt">style</span>:value});
+        }
+      }
+
+      <span class="co">// specify options</span>
+      <span class="kw">var</span> options = {
+        <span class="dt">width</span>:  <span class="st">&#39;600px&#39;</span>,
+        <span class="dt">height</span>: <span class="st">&#39;600px&#39;</span>,
+        <span class="dt">style</span>: <span class="st">&#39;surface&#39;</span>,
+        <span class="dt">showPerspective</span>: <span class="kw">true</span>,
+        <span class="dt">showGrid</span>: <span class="kw">true</span>,
+        <span class="dt">showShadow</span>: <span class="kw">false</span>,
+        <span class="dt">keepAspectRatio</span>: <span class="kw">true</span>,
+        <span class="dt">verticalRatio</span>: <span class="fl">0.5</span>
+      };
+
+      <span class="co">// Instantiate our graph object.</span>
+      <span class="kw">var</span> container = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&#39;mygraph&#39;</span>);
+      graph = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Graph3d</span>(container, data, options);
+    }
+  &lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;/head</span>&gt;
+
+&lt;body onload=<span class="st">&quot;drawVisualization();&quot;</span>&gt;
+&lt;div id=<span class="st">&quot;mygraph&quot;</span>&gt;&lt;<span class="ot">/div&gt;</span>
+
+<span class="ot">&lt;div id=&quot;info&quot;&gt;&lt;/div</span>&gt;
+&lt;<span class="ot">/body&gt;</span>
+<span class="ot">&lt;/html</span>&gt;</code></pre>
+<p>而在網路圖方面，您甚至可以指定每個節點應該呈現的圖片，以下是一個繪製電腦網路圖的範例。</p>
+<ul>
+<li><a href="http://visjs.org/examples/network/03_images.html">http://visjs.org/examples/network/03_images.html</a></li>
+</ul>
+<div class="figure">
+<img src="../img/visNet.jpg" alt="圖、用 vis.js 繪製電腦網路圖" /><p class="caption">圖、用 vis.js 繪製電腦網路圖</p>
+</div>
+<p>以下是上述範例的完整 HTML 檔案。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Network | Images&lt;<span class="ot">/title&gt;</span>
+
+<span class="ot">  &lt;style type=&quot;text/css</span><span class="st">&quot;&gt;</span>
+    body {
+      <span class="dt">font</span>: 10pt arial;
+    }
+    #mynetwork {
+      <span class="dt">width</span>: 600px;
+      <span class="dt">height</span>: 600px;
+      <span class="dt">border</span>: 1px solid lightgray;
+    }
+  &lt;<span class="ot">/style&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot; src=&quot;</span>../../dist/<span class="ot">vis</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+  &lt;link href=<span class="st">&quot;../../dist/vis.css&quot;</span> rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> <span class="ot">/&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot;&gt;</span>
+    <span class="kw">var</span> nodes = <span class="kw">null</span>;
+    <span class="kw">var</span> edges = <span class="kw">null</span>;
+    <span class="kw">var</span> network = <span class="kw">null</span>;
+
+    <span class="kw">var</span> DIR = <span class="st">&#39;img/refresh-cl/&#39;</span>;
+    <span class="kw">var</span> LENGTH_MAIN = <span class="dv">150</span>;
+    <span class="kw">var</span> LENGTH_SUB = <span class="dv">50</span>;
+
+    <span class="co">// Called when the Visualization API is loaded.</span>
+    <span class="kw">function</span> <span class="fu">draw</span>() {
+      <span class="co">// Create a data table with nodes.</span>
+      nodes = [];
+
+      <span class="co">// Create a data table with links.</span>
+      edges = [];
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">1</span>, <span class="dt">label</span>: <span class="st">&#39;Main&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">2</span>, <span class="dt">label</span>: <span class="st">&#39;Office&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">3</span>, <span class="dt">label</span>: <span class="st">&#39;Wireless&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">2</span>, <span class="dt">length</span>: LENGTH_MAIN});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">3</span>, <span class="dt">length</span>: LENGTH_MAIN});
+
+      <span class="kw">for</span> (<span class="kw">var</span> i = <span class="dv">4</span>; i &lt;= <span class="dv">7</span>; i++) {
+        <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: i, <span class="dt">label</span>: <span class="st">&#39;Computer&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-My-Computer-3-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+        <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">2</span>, <span class="dt">to</span>: i, <span class="dt">length</span>: LENGTH_SUB});
+      }
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">101</span>, <span class="dt">label</span>: <span class="st">&#39;Printer&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-Printer-Blue-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">2</span>, <span class="dt">to</span>: <span class="dv">101</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">102</span>, <span class="dt">label</span>: <span class="st">&#39;Laptop&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-Laptop-1-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">3</span>, <span class="dt">to</span>: <span class="dv">102</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">103</span>, <span class="dt">label</span>: <span class="st">&#39;network drive&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Drive-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">103</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">104</span>, <span class="dt">label</span>: <span class="st">&#39;Internet&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;System-Firewall-2-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">104</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="kw">for</span> (<span class="kw">var</span> i = <span class="dv">200</span>; i &lt;= <span class="dv">201</span>; i++ ) {
+        <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: i, <span class="dt">label</span>: <span class="st">&#39;Smartphone&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-My-PDA-02-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+        <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">3</span>, <span class="dt">to</span>: i, <span class="dt">length</span>: LENGTH_SUB});
+      }
+
+      <span class="co">// create a network</span>
+      <span class="kw">var</span> container = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&#39;mynetwork&#39;</span>);
+      <span class="kw">var</span> data = {
+        <span class="dt">nodes</span>: nodes,
+        <span class="dt">edges</span>: edges
+      };
+      <span class="kw">var</span> options = {
+        <span class="dt">stabilize</span>: <span class="kw">false</span>   <span class="co">// stabilize positions before displaying</span>
+      };
+      network = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Network</span>(container, data, options);
+    }
+  &lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;/head</span>&gt;
+
+&lt;body onload=<span class="st">&quot;draw()&quot;</span>&gt;
+
+&lt;div id=<span class="st">&quot;mynetwork&quot;</span>&gt;&lt;<span class="ot">/div&gt;</span>
+
+<span class="ot">&lt;/body</span>&gt;
+&lt;<span class="ot">/html&gt;</span></code></pre>
+<p>透過這兩個範例，相信您應該可以感覺到 vis.js 的誠意，這真的是一個相當棒的繪圖函式庫啊！</p>
+<h3 id="參考文獻-4"><a href="#參考文獻-4">參考文獻</a></h3>
+<ul>
+<li><a href="http://visjs.org/">http://visjs.org/</a></li>
+</ul>
+<h2 id="codemirror----有-intellisense-功能的網頁版開源編輯器"><a href="#codemirror----有-intellisense-功能的網頁版開源編輯器">CodeMirror -- 有 IntelliSense 功能的網頁版開源編輯器</a></h2>
+<p>在建構 jsLab 科學計算平台的過程中，由於要讓使用者在 JavaScript 程式編輯上有更好的感受，而不是只能依賴死板板的 textarea 區塊，所以我們找了幾個用 javascript 建構的網頁版程式碼編輯器，像是 Ace、Atom、EditArea 與 CodeMirror 等專案，最後我們認為 CodeMirror 最適合我們使用，因為 CodeMirror 的資源完整，而且具有支援 JavaScript 語言 IntelliSense 功能的插件。</p>
+<ul>
+<li><a href="https://atom.io/">https://atom.io/</a></li>
+<li><a href="http://ace.c9.io/">http://ace.c9.io/</a></li>
+<li><a href="http://www.cdolivet.com/editarea/">http://www.cdolivet.com/editarea/</a></li>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+</ul>
+<p>CodeMirror 支援超過六十種語言的上色與編輯功能，包含 HTML、XML、Javascript、Python、Ruby、C/C++/C#、.... 等等，您可以參考下列網頁。</p>
+<ul>
+<li><a href="http://codemirror.net/mode/index.html">http://codemirror.net/mode/index.html</a></li>
+</ul>
+<p>另外、 CodeMirror 還支援了下列的特色功能。</p>
+<ul>
+<li>A powerful, composable language mode system</li>
+<li>Autocompletion (XML)</li>
+<li>Code folding</li>
+<li>Configurable keybindings</li>
+<li>Vim, Emacs, and Sublime Text bindings</li>
+<li>Search and replace interface</li>
+<li>Bracket and tag matching</li>
+<li>Support for split views</li>
+<li>Linter integration</li>
+<li>Mixing font sizes and styles</li>
+<li>Various themes</li>
+<li>Able to resize to fit content</li>
+<li>Inline and block widgets</li>
+<li>Programmable gutters</li>
+<li>Making ranges of text styled, read-only, or atomic</li>
+<li>Bi-directional text support</li>
+<li>Many other methods and addons...</li>
+</ul>
+<p>其中我們最需要的是 JavaScript 的 Intellisense 功能，該功能的範例網址如下：</p>
+<ul>
+<li><a href="http://codemirror.net/demo/complete.html">http://codemirror.net/demo/complete.html</a></li>
+</ul>
+<p>可惜的是，該範例使用 Ctrl-Space 做為 Intellisense 的功能鍵，但是這個按鍵與繁體中文 windows 的輸入法切換功能相衝，所以沒辦法正常運作，因此我們將該範例的 「Ctrl-Space」 改為 「Ctrl-.」 ，以避免這種衝突的情況，修改版的範例的網址與程式碼如下。</p>
+<ul>
+<li><a href="http://ccckmit.github.io/jslab/js/codemirror/demo/jscomplete.html">http://ccckmit.github.io/jslab/js/codemirror/demo/jscomplete.html</a></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!doctype html&gt;
+
+&lt;title&gt;CodeMirror: Autocomplete Demo&lt;<span class="ot">/title&gt;</span>
+<span class="ot">&lt;meta charset=&quot;utf-8&quot;/</span>&gt;
+&lt;link rel=stylesheet href=<span class="st">&quot;../doc/docs.css&quot;</span>&gt;
+
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> href=<span class="st">&quot;../lib/codemirror.css&quot;</span>&gt;
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> href=<span class="st">&quot;../addon/hint/show-hint.css&quot;</span>&gt;
+&lt;script src=<span class="st">&quot;../lib/codemirror.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;../addon/hint/show</span>-<span class="ot">hint</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;script src=<span class="st">&quot;../addon/hint/javascript-hint.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;../mode/javascript/javascript</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+
+&lt;div id=nav&gt;
+  &lt;a href=<span class="st">&quot;http://codemirror.net&quot;</span>&gt;&lt;img id=logo src=<span class="st">&quot;../doc/logo.png&quot;</span>&gt;&lt;<span class="ot">/a&gt;</span>
+
+<span class="ot">  &lt;ul&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a href=&quot;../index</span>.<span class="fu">html</span><span class="st">&quot;&gt;Home&lt;/a&gt;</span>
+    &lt;li&gt;&lt;a href=<span class="st">&quot;../doc/manual.html&quot;</span>&gt;Manual&lt;<span class="ot">/a&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a href=&quot;https://github.com/marijnh/codemirror&quot;&gt;Code&lt;/a</span>&gt;
+  &lt;<span class="ot">/ul&gt;</span>
+<span class="ot">  &lt;ul&gt;</span>
+<span class="ot">    &lt;li&gt;&lt;a class=active href=&quot;#&quot;&gt;Autocomplete&lt;/a</span>&gt;
+  &lt;<span class="ot">/ul&gt;</span>
+<span class="ot">&lt;/div</span>&gt;
+
+&lt;article&gt;
+&lt;h2&gt;Autocomplete Demo&lt;<span class="ot">/h2&gt;</span>
+<span class="ot">&lt;form&gt;&lt;textarea id=&quot;code&quot; name=&quot;code&quot;&gt;</span>
+<span class="ot">function getCompletions</span><span class="fl">(</span><span class="ot">token, context</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">  var found = </span><span class="bn">[]</span><span class="ot">, start = token.string;</span>
+<span class="ot">  function maybeAdd</span><span class="fl">(</span><span class="ot">str</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">str.indexOf</span><span class="fl">(</span><span class="ot">start</span><span class="fl">)</span><span class="ot"> == 0</span><span class="fl">)</span><span class="ot"> found.push</span><span class="fl">(</span><span class="ot">str</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  function gatherCompletions</span><span class="fl">(</span><span class="ot">obj</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">typeof obj == &quot;string&quot;</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">stringProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj instanceof Array</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">arrayProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj instanceof Function</span><span class="fl">)</span><span class="ot"> forEach</span><span class="fl">(</span><span class="ot">funcProps, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    for </span><span class="fl">(</span><span class="ot">var name in obj</span><span class="fl">)</span><span class="ot"> maybeAdd</span><span class="fl">(</span><span class="ot">name</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+
+<span class="ot">  if </span><span class="fl">(</span><span class="ot">context</span><span class="fl">)</span><span class="ot"> {</span>
+<span class="ot">    // If this is a property, see if it belongs to some object we can</span>
+<span class="ot">    // find in the current environment.</span>
+<span class="ot">    var obj = context.pop</span><span class="fl">()</span><span class="ot">, base;</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-variable&quot;</span><span class="fl">)</span>
+<span class="ot">      base = window</span><span class="bn">[obj.string]</span><span class="ot">;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-string&quot;</span><span class="fl">)</span>
+<span class="ot">      base = &quot;&quot;;</span>
+<span class="ot">    else if </span><span class="fl">(</span><span class="ot">obj.className == &quot;js-atom&quot;</span><span class="fl">)</span>
+<span class="ot">      base = 1;</span>
+<span class="ot">    while </span><span class="fl">(</span><span class="ot">base != null &amp;&amp; context.length</span><span class="fl">)</span>
+<span class="ot">      base = base</span><span class="bn">[context.pop().string]</span><span class="ot">;</span>
+<span class="ot">    if </span><span class="fl">(</span><span class="ot">base != null</span><span class="fl">)</span><span class="ot"> gatherCompletions</span><span class="fl">(</span><span class="ot">base</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  else {</span>
+<span class="ot">    // If not, just look in the window object and any local scope</span>
+<span class="ot">    // </span><span class="fl">(</span><span class="ot">reading into JS mode internals to get at the local variables</span><span class="fl">)</span>
+<span class="ot">    for </span><span class="fl">(</span><span class="ot">var v = token.state.localVars; v; v = v.next</span><span class="fl">)</span><span class="ot"> maybeAdd</span><span class="fl">(</span><span class="ot">v.name</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    gatherCompletions</span><span class="fl">(</span><span class="ot">window</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    forEach</span><span class="fl">(</span><span class="ot">keywords, maybeAdd</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">  }</span>
+<span class="ot">  return found;</span>
+<span class="ot">}</span>
+<span class="ot">&lt;/textarea</span>&gt;&lt;<span class="ot">/form&gt;</span>
+
+<span class="ot">&lt;p&gt;Press &lt;strong&gt;ctrl-.&lt;/strong</span>&gt; to activate <span class="ot">autocompletion</span>. <span class="fu">Built</span>
+<span class="fu">on</span> <span class="fu">top</span> <span class="fu">of</span> <span class="fu">the</span> &lt;a href=<span class="st">&quot;../doc/manual.html#addon_show-hint&quot;</span>&gt;&lt;code&gt;show-hint&lt;<span class="ot">/code&gt;&lt;/a</span>&gt;
+and &lt;a href=<span class="st">&quot;../doc/manual.html#addon_javascript-hint&quot;</span>&gt;&lt;code&gt;javascript-hint&lt;<span class="ot">/code&gt;&lt;/a</span>&gt;
+<span class="ot">addons</span>.&lt;<span class="ot">/p&gt;</span>
+
+<span class="ot">    &lt;script&gt;</span>
+<span class="ot">      var editor = CodeMirror.fromTextArea</span><span class="fl">(</span><span class="ot">document.getElementById</span><span class="fl">(</span><span class="ot">&quot;code&quot;</span><span class="fl">)</span><span class="ot">, {</span>
+<span class="ot">        lineNumbers: true,</span>
+<span class="ot">        extraKeys: {&quot;Ctrl-.&quot;: &quot;autocomplete&quot;},</span>
+<span class="ot">        mode: {name: &quot;javascript&quot;, globalVars: true}</span>
+<span class="ot">      }</span><span class="fl">)</span><span class="ot">;</span>
+<span class="ot">    &lt;/script</span>&gt;
+  &lt;<span class="ot">/article&gt;</span></code></pre>
+<p>不過、雖然 CodeMirror 支援了 JavaScript 的 Intellisense 功能，但是卻不徹底，對於像是字串之類的語法，他可以顯示提示函數與訊息，但對於變數的部分，卻無法正確提示，以下是一個可以正確提示的範例。</p>
+<div class="figure">
+<img src="../img/CodeMirrorJsComplete.jpg" alt="圖、CodeMirror 可以正確提示的 JavaScript 編輯範例" /><p class="caption">圖、CodeMirror 可以正確提示的 JavaScript 編輯範例</p>
+</div>
+<p>如果需要更進一步的正確提示功能，恐怕還是得修改 CodeMirror 的 <code>../addon/hint/javascript-hint.js</code> 模組才行。</p>
+<p>雖然 CodeMirror 已經算不錯了，不過我想還有進步空間，但大體來說 CodeMirror 已經是很好的網頁程式編輯器了。</p>
+<p>不過、如果您需要的是可以加上「粗體、斜體、字型、超連結、....」等功能，那就不是 CodeMirror 所具備的功能了，這種功能是 RichText Editor 才具備的，您可以參考下列文章中的 RichText 編輯器。</p>
+<ul>
+<li><a href="http://blog.smartbear.com/programming/five-free-javascript-libraries-to-add-text-editing-to-your-web-application/">5 Free JavaScript Libraries to Add Text Editing to Your Web Application</a></li>
+</ul>
+<h3 id="參考文獻-5"><a href="#參考文獻-5">參考文獻</a></h3>
+<ul>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+<li><a href="http://codemirror.net/demo/complete.html">http://codemirror.net/demo/complete.html</a></li>
+</ul>
+<h2 id="memory-sanitization-作者研發養成所-bridan"><a href="#memory-sanitization-作者研發養成所-bridan">Memory Sanitization (作者：研發養成所 Bridan)</a></h2>
+<p>什麼叫記憶體衛生處理？讓我們先看個故事再做說明。</p>
+<p>阿誠是某高科技公司的工程師，他負責 使用儀器量測新產品實驗數據，有位同事阿堅和他很要好，常常去實驗室找他聊天，其實阿堅是另一家公司派來長期臥底的間諜，專門探詢公司最新研發的產品。公司有一台極輕巧的溫度監控儀，阿誠常使用它對新產品零件溫度監控，實驗完畢後，資料當然改存到電腦中，並且依據儀器說明書上，資料清除步驟清資料。一天阿堅向阿誠借用這儀器，其實他是把儀器拿給儀器駭客進行逆向工程，去解碼原始實驗資料。</p>
+<p>從這故事，你學到了什麼？有許多科技公司對資訊安全非常在意，連清理資料也要徹底破壞！</p>
+<p>大家都知道在 <em>電腦上刪除檔案，只不過是把檔案搬移到資源回收筒，隨時可以檔案還原，稍微注意的人，還會清除資源回收筒的檔案，更高竿的會再進行衛生處理，徹底洗掉不要的資料。</em></p>
+<p>一般資料庫，清除資料的做法是破壞資料索引，簡單的說，利用一個索引指示有多少資料在資料庫中，如果索引為N，表示有N筆資料在其中，使用者可以循序用指令將資料取出。當索引為零時，也表示資料庫資料清除。這方法雖然快速簡單，可是欠缺資料安全性，為避免上述事件發生，除了一般清除，還要另外設計徹底清除功能。換個例子說明，也就是上完廁所，除了擦屁股，沖水之外，不要忘記馬桶順便刷一刷洗一洗，徹底做個衛生處理。</p>
+<h2 id="利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘"><a href="#利用-sql-compact-edition-免費建立擁有-database-的-azure-websites-作者陳星銘">利用 SQL Compact Edition 免費建立擁有 DataBase 的 Azure Websites (作者：陳星銘)</a></h2>
+<p><del> 在只有免費服務才使用 </del> 的這個世代，如果只是一個Demo的小型網站自然不想使用到雲端的SQL DB來做為DataBase (其實只是不想花一個月150左右的DB費用XD)</p>
+<p>鑑於想要使用免費Azure Websites，但又想要連接資料庫的人要怎麼做呢？</p>
+<p>只能每個月砸150台幣買DB了嗎！？</p>
+<p>當然是 <strong>NO！</strong></p>
+<p>今天就來教大家利用SQL Compact Edition不花一毛錢使用擁有 DataBase 的 Azure Websites 吧！</p>
+<p>以下看圖說故事開始：</p>
+<h3 id="第一步打開你的vs安裝兩個nuget套件"><a href="#第一步打開你的vs安裝兩個nuget套件">第一步：打開你的VS安裝兩個Nuget套件</a></h3>
+<p>為你的專案加入兩個Nuget套件，分別是</p>
+<ol style="list-style-type: decimal">
+<li>EntityFrame.SqlServerCompact </li>
+<li>Microsoft SQL Server Compact Edition</li>
+</ol>
+<div class="figure">
+<img src="../img/azure1.jpg" />
+</div>
+<h3 id="第二步加入以下連線字串至web.configconnectionstringsconnectionstrings-區段中"><a href="#第二步加入以下連線字串至web.configconnectionstringsconnectionstrings-區段中"> 第二步：加入以下連線字串至Web.Config <code>&lt;connectionStrings&gt; &lt;/connectionStrings&gt;</code> 區段中</a></h3>
+<pre><code>&lt;add name =&quot;DefaultConnection&quot; connectionString =&quot;Data Source=|DataDirectory|CompactDB.sdf&quot; providerName =&quot;System.Data.SqlServerCe.4.0&quot; /&gt;</code></pre>
+<p>其中 Data Source=|DataDirectory|CompactDB.sdf 可得到相對路徑的 App_Data.sdf</p>
+<div class="figure">
+<img src="../img/azure2.jpg" />
+</div>
+<h3 id="第三步在app_data中右鍵加入新增項目sql-server-資料庫"><a href="#第三步在app_data中右鍵加入新增項目sql-server-資料庫">第三步：在App_Data中右鍵加入→新增項目→Sql Server 資料庫</a></h3>
+<p>注意：這裡我將檔名改為.sdf檔，因為.sdf 很適合小型專案使用，不需要用到.mdf</p>
+<div class="figure">
+<img src="../img/azure3.jpg" />
+</div>
+<p>若你用的和我一樣是MVC的CodeFirst則是改掉你的連線字串後，讓DB自己產生出來，但是這之後有一個很重要的步驟！真的很重要！我卡在這邊很久！操作如下：</p>
+<p>產生DB後→點選右上角顯示所有檔案→找到你的CompactDB.sdf→右鍵加入至專案</p>
+<div class="figure">
+<img src="../img/azure4.jpg" />
+</div>
+<h3 id="第四步到你的azure建立websites"><a href="#第四步到你的azure建立websites">第四步：到你的Azure建立WebSites</a></h3>
+<p>左下新增→接著如圖選擇建立網站</p>
+<div class="figure">
+<img src="../img/azure5.jpg" />
+</div>
+<h3 id="第五步"><a href="#第五步">第五步：</a></h3>
+<p>建好網站後，點選你的網站，點選上方設定，拉到下面，填入剛剛的連接字串，選擇&quot;自訂&quot;，按下方儲存</p>
+<div class="figure">
+<img src="../img/azure6.jpg" />
+</div>
+<h3 id="第六步"><a href="#第六步">第六步：</a></h3>
+<p>到儀表板，點選下載發行設定檔，將其儲存在電腦中</p>
+<div class="figure">
+<img src="../img/azure7.jpg" />
+</div>
+<h3 id="第七步"><a href="#第七步">第七步：</a></h3>
+<p>對你的專案按右鍵→發行→匯入→選到剛剛的設定檔→確定→發行</p>
+<div class="figure">
+<img src="../img/azure8.jpg" />
+</div>
+<p>然後就發行成功囉！完成 <a href="http://websitewithdbforfree.azurewebsites.net/">網址參考</a></p>
+<p>希望有幫助到大家 <del>的錢包</del> ！XD</p>
+<h3 id="授權說明"><a href="#授權說明">授權說明：</a></h3>
+<ul>
+<li>本著作係採用姓名標示-非商業性-相同方式分享 3.0 台灣授權。欲查看本授權條款副本，請到 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/tw/">http://creativecommons.org/licenses/by-nc-sa/3.0/tw/</a> ，或寫信至Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</li>
+</ul>
+<h2 id="函數指標陣列-array-of-function-pointers-作者研發養成所-bridan"><a href="#函數指標陣列-array-of-function-pointers-作者研發養成所-bridan">函數指標陣列 (Array of Function Pointers) (作者：研發養成所 Bridan)</a></h2>
+<p>函數指標陣列，這是一種 C/C++ 程式語言的高階設計技巧，希望能有較高的執行效能。 我以 Arduino 當作測試平台，比較兩種程式設計技巧，發現與我的認知有些差異。</p>
+<p>先看傳統設計方式，用 switch case 執行不同功能：</p>
+<pre class="sourceCode CPP"><code class="sourceCode cpp"><span class="co">//</span>
+<span class="co">// Author: Bridan</span>
+<span class="co">//         http://4rdp.blogspot.com</span>
+<span class="co">// Date:   2014/09/27</span>
+<span class="co">//</span>
+<span class="co">// Brief:  Test switch case</span>
+<span class="co">//</span>
+
+<span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>);
+  <span class="kw">while</span> (!Serial) {
+    ; <span class="co">// wait for serial port to connect. Needed for Leonardo only</span>
+  }
+
+  TCCR1A = <span class="bn">0x00</span>;                <span class="co">// Normal mode, just as a Timer</span>
+  TCCR1B &amp;= ~_BV(CS12);         <span class="co">// no prescaling</span>
+  TCCR1B &amp;= ~_BV(CS11);      
+  TCCR1B |= _BV(CS10);   
+}
+
+<span class="dt">void</span> loop() {
+  byte i;
+
+  TCNT1 = <span class="dv">0</span>;     <span class="co">// reset timer</span>
+  <span class="kw">for</span> (i=<span class="dv">0</span> ; i＜<span class="dv">3</span> ; i++) {
+    <span class="kw">switch</span> (i) {
+      <span class="kw">case</span> <span class="dv">0</span>:
+        Serial.println(<span class="st">&quot;CASE 0&quot;</span>);
+        <span class="kw">break</span>;
+      <span class="kw">case</span> <span class="dv">1</span>:
+        Serial.println(<span class="st">&quot;CASE 1&quot;</span>);
+        <span class="kw">break</span>;
+      <span class="kw">case</span> <span class="dv">2</span>:
+        Serial.println(<span class="st">&quot;CASE 2&quot;</span>);
+        <span class="kw">break</span>;
+    }
+  }
+  Serial.println(TCNT1);
+}</code></pre>
+<p>switch case 3 個時，編譯 2410 bytes，執行 6092 ~ 6100 timer clock switch case 4 個時，編譯 2430 bytes，執行 8136 ~ 8146 timer clock switch case 5 個時，編譯 2458 bytes，執行 10185 ~ 10195 timer clock</p>
+<p>將上面程式修改成函數指標陣列，以查表方式直接跳到執行的程式：</p>
+<pre class="sourceCode CPP"><code class="sourceCode cpp"><span class="co">//</span>
+<span class="co">// Author: Bridan</span>
+<span class="co">//         http://4rdp.blogspot.com</span>
+<span class="co">// Date:   2014/09/27</span>
+<span class="co">//</span>
+<span class="co">// Brief:  Test Array of Function Pointers</span>
+<span class="co">//</span>
+
+<span class="dt">void</span> setup() {
+  Serial.begin(<span class="dv">9600</span>);
+  <span class="kw">while</span> (!Serial) {
+    ; <span class="co">// wait for serial port to connect. Needed for Leonardo only</span>
+  }
+
+  TCCR1A = <span class="bn">0x00</span>;                <span class="co">// Normal mode, just as a Timer</span>
+  TCCR1B &amp;= ~_BV(CS12);         <span class="co">// no prescaling</span>
+  TCCR1B &amp;= ~_BV(CS11);      
+  TCCR1B |= _BV(CS10);   
+}
+
+<span class="dt">void</span> FUNC0(<span class="dt">void</span>) {
+     Serial.println(<span class="st">&quot;CASE 0&quot;</span>);
+}
+<span class="dt">void</span> FUNC1(<span class="dt">void</span>) {
+     Serial.println(<span class="st">&quot;CASE 1&quot;</span>);
+}
+<span class="dt">void</span> FUNC2(<span class="dt">void</span>) {
+     Serial.println(<span class="st">&quot;CASE 2&quot;</span>);
+}
+
+<span class="dt">void</span> (*TABLE_JUMP[])(<span class="dt">void</span>) = {
+  FUNC0,
+  FUNC1,
+  FUNC2
+};
+
+<span class="dt">void</span> loop() {
+  byte i;
+
+  TCNT1 = <span class="dv">0</span>;     <span class="co">// reset timer</span>
+  <span class="kw">for</span> (i=<span class="dv">0</span> ; i＜<span class="dv">3</span> ; i++) {
+    (*TABLE_JUMP[i])();
+  }
+  Serial.println(TCNT1);
+}</code></pre>
+<p>TABLE 3 個時，編譯 2438 bytes，執行 6082 ~ 6096 timer clock TABLE 4 個時，編譯 2470 bytes，執行 8130 ~ 8142 timer clock TABLE 5 個時，編譯 2504 bytes，執行 10176 ~ 10194 timer clock</p>
+<p>以往我所用過的 compiler，switch case 相當於很多 if ... else ... 的組合，條件一個一個比較，數值越大的條件，花費比較的時間越多，以上面的例子在比較方面所費的時間 = 1 + 2 + 3 + ... + N，而函數指標陣列查表時間約 = 1 x N，比 switch case 有效率，這部分與結果相符 (比較條件太少，不易看出差異)。</p>
+<p>至於程式碼大小，發現越多條件狀況，以函數指標陣列方式設計比 switch case 程式碼多？因為不清楚 Arduino compiler 如何設計，無法進一步評論，但直覺 Arduino compiler 缺少這方面最佳化處理。</p>
+<h1 id="雜誌訊息"><a href="#雜誌訊息">雜誌訊息</a></h1>
+<h2 id="讀者訂閱"><a href="#讀者訂閱">讀者訂閱</a></h2>
+<p>程式人雜誌是一個結合「開放原始碼與公益捐款活動」的雜誌，簡稱「開放公益雜誌」。開放公益雜誌本著「讀書做善事、寫書做公益」的精神，我們非常歡迎程式人認養專欄、或者捐出您的網誌，如果您願意成為本雜誌的專欄作家，請加入 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 一同共襄盛舉。</p>
+<p>我們透過發行這本雜誌，希望讓大家可以讀到想讀的書，學到想學的技術，同時也讓寫作的朋友的作品能產生良好價值 – 那就是讓讀者根據雜誌的價值捐款給慈善團體。 讀雜誌做公益也不需要有壓力，您不需要每讀一本就急著去捐款，您可以讀了十本再捐，或者使用固定的月捐款方式，當成是雜誌訂閱費，或者是季捐款、一年捐一次等都 OK ! 甚至是單純當個讀者我們也都很歡迎！</p>
+<p>本雜誌每期參考價：NT 50 元，如果您喜歡本雜誌，請將書款捐贈公益團體。例如可捐贈給「羅慧夫顱顏基金會 彰化銀行(009) 帳號：5234-01-41778-800」。(若匯款要加註可用「程式人雜誌」五個字)</p>
+<h2 id="投稿須知"><a href="#投稿須知">投稿須知</a></h2>
+<p><em>給專欄寫作者：</em> 做公益不需要有壓力。如果您願意撰寫專欄，您可以輕鬆的寫，如果當月的稿件出不來，我們會安排其他稿件上場。</p>
+<p><em>給網誌捐贈者：</em> 如果您沒時間寫專欄或投稿，沒關係，只要將您的網誌以 [創作共用的「姓名標示、非商業性、相同方式分享」授權] 並通知我們，我們會自動從中選取需要的文章進行編輯，放入適當的雜誌當中出刊。</p>
+<p><em>給文章投稿者：</em> 程式人雜誌非常歡迎您加入作者的行列，如果您想撰寫任何文章或投稿，請用 markdown 或 LibreOffice 編輯好您的稿件，並於每個月 25 日前投稿到<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 的檔案區，我們會盡可能將稿件編入隔月1號出版程式人雜誌當中，也歡迎您到社團中與我們一同討論。</p>
+<p>如果您要投稿給程式人雜誌，我們最希望的格式是採用 markdown 的格式撰寫，然後將所有檔按壓縮為 zip 上傳到社團檔案區給我們， 如您想學習 markdown 的撰寫出版方式，可以參考 <a href="https://dl.dropboxusercontent.com/u/101584453/pmag/201304/htm/video1.html">看影片學 markdown 編輯出版流程</a> 一文。</p>
+<p>如果您無法採用 markdown 的方式撰寫，也可以直接給我們您的稿件，像是 MS. Word 的 doc 檔或 LibreOffice 的 odt 檔都可以，我們 會將這些稿件改寫為 markdown 之後編入雜誌當中。</p>
+<h2 id="參與編輯"><a href="#參與編輯">參與編輯</a></h2>
+<p>您也可以擔任程式人雜誌的編輯，甚至創造一個全新的公益雜誌，我們誠摯的邀請您加入「開放公益出版」的行列，如果您想擔任編輯或創造新雜誌，也歡迎到 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 來與我們討論相關事宜。</p>
+<h2 id="公益資訊"><a href="#公益資訊">公益資訊</a></h2>
+<table>
+<col width="22%" />
+<col width="20%" />
+<col width="28%" />
+<col width="28%" />
+<thead>
+<tr class="header">
+<th align="left">公益團體</th>
+<th align="left">聯絡資訊</th>
+<th align="left">服務對象</th>
+<th align="left">捐款帳號</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">財團法人羅慧夫顱顏基金會</td>
+<td align="left"><a href="http://www.nncf.org/">http://www.nncf.org/</a> <BR/> <script type="text/javascript">
+<!--
+h='&#110;&#110;&#x63;&#102;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#108;&#x79;&#110;&#110;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#108;&#x79;&#110;&#110;&#32;&#x61;&#116;&#32;&#110;&#110;&#x63;&#102;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;</noscript> <BR/> 02-27190408分機 232</td>
+<td align="left">顱顏患者 (如唇顎裂、小耳症或其他罕見顱顏缺陷）</td>
+<td align="left">銀行：009彰化銀行民生分行<BR/> 帳號：5234-01-41778-800</td>
+</tr>
+<tr class="even">
+<td align="left">社團法人台灣省兒童少年成長協會</td>
+<td align="left"><a href="http://www.cyga.org/">http://www.cyga.org/</a> <BR/> <script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <BR/> 04-23058005</td>
+<td align="left">單親、隔代教養.弱勢及一般家庭之兒童青少年</td>
+<td align="left">銀行：新光銀行 <BR/> 戶名：台灣省兒童少年成長協會 <BR/> 帳號：103-0912-10-000212-0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#jslab-科學計算平台背後的開放原始碼結構">「JsLab 科學計算平台」背後的開放原始碼結構</a></li>
+</ul>
+</div>
+<h2 id="jslab-科學計算平台背後的開放原始碼結構"><a href="#jslab-科學計算平台背後的開放原始碼結構">「JsLab 科學計算平台」背後的開放原始碼結構</a></h2>
+<p>為了要用 JavaScript 建構出科學計算平台，我們創建了以下的 JsLab 開放原始碼專案。</p>
+<ul>
+<li><a href="https://github.com/ccckmit/jslab/tree/gh-pages">https://github.com/ccckmit/jslab/tree/gh-pages</a></li>
+</ul>
+<p>我們大量的採用了 JavaScript 的開放原始碼函式庫，像是在「機率統計」領域採用了 jStat 這個專案，在繪圖領域採用了 d3.js、c3.js、vis.js 等等，這些專案的網址如下。</p>
+<ul>
+<li><a href="http://d3js.org/">http://d3js.org/</a></li>
+<li><a href="http://c3js.org/">http://c3js.org/</a></li>
+<li><a href="http://visjs.org/">http://visjs.org/</a></li>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+</ul>
+<p>JsLab 科學計算平台的核心，是一組基於 jStat 專案的重新封裝，我們將 jStat 重新封裝成類似 R 函式庫的介面，並且加上了一些 jStat 當中所沒有的功能，特別是統計檢定的部份，形成了 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js">R.js</a> 這個 JavaScript 程式，讓 JavaScript 也能擁有類似 R 軟體的機率統計函式庫。</p>
+<p>我們雖然使用了 d3.js 這個繪圖函式庫進行 2D 繪圖，但由於 d3.js 並不容易使用，所以我們採用了 c3.js 這個基於 d3 的延伸套件，簡化 d3 繪圖函式庫的使用，讓我們不需瞭解太多繪圖的細節就能寫出 JsLab 的繪圖函式庫。</p>
+<p>舉例而言、下列的圖形就是依靠 c3.js 所繪製的，只不過我們將 c3.js 進一步封裝到 JsLab 的 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a> 這個的繪圖函式庫當中而已。</p>
+<div class="figure">
+<img src="../img/jsLabC3Graph.jpg" />
+</div>
+<p>以下是我們將 c3.js 重新封裝成 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a> 的程式碼片段。</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> C3G=<span class="kw">function</span>() {
+  <span class="kw">this</span>.<span class="fu">g</span> = {
+        <span class="dt">data</span>: {
+          <span class="dt">xs</span>: {},
+          <span class="dt">columns</span>: [ <span class="co">/*[&quot;x&quot;, 1, 2, 3, 4 ]*/</span> ],
+          <span class="dt">type</span>: <span class="st">&quot;line&quot;</span>, 
+          <span class="dt">types </span>: {}
+        },
+        <span class="dt">axis</span>: {
+          <span class="dt">x</span>: {
+            <span class="dt">label</span>: <span class="st">&#39;X&#39;</span>,
+            <span class="dt">tick</span>: { <span class="dt">fit</span>: <span class="kw">false</span>, <span class="dt">format</span>:<span class="ot">d3</span>.<span class="fu">format</span>(<span class="st">&quot;.2f&quot;</span>) }
+          },
+          <span class="dt">y</span>: { <span class="dt">label</span>: <span class="st">&#39;Y&#39;</span>, 
+            <span class="dt">tick </span>: { <span class="dt">format</span>: <span class="ot">d3</span>.<span class="fu">format</span>(<span class="st">&quot;.2f&quot;</span>) }
+          }
+        }, 
+        <span class="dt">bar</span>: { <span class="dt">width</span>: { <span class="dt">ratio</span>: <span class="fl">0.9</span> } }, 
+      };
+  <span class="kw">this</span>.<span class="fu">varcount</span> = <span class="dv">0</span>;
+  <span class="kw">this</span>.<span class="fu">xrange</span>(-<span class="dv">10</span>, <span class="dv">10</span>);
+  <span class="kw">this</span>.<span class="fu">step</span> = <span class="dv">1</span>;
+  <span class="kw">this</span>.<span class="fu">setrange</span> = <span class="kw">false</span>;
+}
+....
+<span class="ot">C3G</span>.<span class="ot">prototype</span>.<span class="fu">hist</span> = <span class="kw">function</span>(x, options) {
+  <span class="kw">var</span> name = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;name&quot;</span>, <span class="kw">this</span>.<span class="fu">tempvar</span>()); 
+  <span class="kw">var</span> mode = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;mode&quot;</span>, <span class="st">&quot;&quot;</span>); 
+  <span class="kw">var</span> step = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;step&quot;</span>, <span class="kw">this</span>.<span class="fu">step</span>); 
+  <span class="kw">var</span> from = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;from&quot;</span>, <span class="kw">this</span>.<span class="fu">xmin</span>); 
+  <span class="kw">var</span> to   = <span class="ot">R</span>.<span class="fu">opt</span>(options, <span class="st">&quot;to&quot;</span>, <span class="kw">this</span>.<span class="fu">xmax</span>);
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="fu">types</span>[name] = <span class="st">&quot;bar&quot;</span>;
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="fu">xs</span>[name] = name+<span class="st">&quot;x&quot;</span>;
+  <span class="kw">var</span> xc = <span class="ot">R</span>.<span class="fu">steps</span>(from+step/<span class="fl">2.0</span>, to, step);
+  <span class="kw">var</span> n = (to-from)/step + <span class="dv">1</span>;
+  <span class="kw">var</span> count = <span class="ot">R</span>.<span class="fu">repeats</span>(<span class="dv">0</span>, n);
+  <span class="kw">for</span> (<span class="kw">var</span> i <span class="kw">in</span> x) {
+    <span class="kw">var</span> slot=<span class="ot">Math</span>.<span class="fu">floor</span>((x[i]-from)/step);
+    <span class="kw">if</span> (slot&gt;=<span class="dv">0</span> &amp;&amp; slot &lt; n)
+      count[slot]++;
+  }
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="ot">columns</span>.<span class="fu">push</span>([name+<span class="st">&quot;x&quot;</span>].<span class="fu">concat</span>(xc));
+  <span class="kw">var</span> total = <span class="ot">R</span>.<span class="fu">sum</span>(count);
+  <span class="kw">if</span> (mode === <span class="st">&quot;normalized&quot;</span>)
+    count = <span class="ot">R</span>.<span class="fu">apply</span>(count, <span class="kw">function</span>(c) { <span class="kw">return</span> (<span class="fl">1.0</span>/step)*(c/total); });
+  <span class="kw">this</span>.<span class="ot">g</span>.<span class="ot">data</span>.<span class="ot">columns</span>.<span class="fu">push</span>([name].<span class="fu">concat</span>(count));
+}
+...
+<span class="ot">C3G</span>.<span class="ot">prototype</span>.<span class="fu">show</span> = <span class="kw">function</span>() {
+  <span class="kw">if</span> (<span class="kw">typeof</span>(module)===<span class="st">&quot;undefined&quot;</span>)
+    <span class="kw">return</span> <span class="ot">c3</span>.<span class="fu">generate</span>(<span class="kw">this</span>.<span class="fu">g</span>);
+}</code></pre>
+<p>另外、由於 d3.js 並沒有支援 3D 曲面圖形的繪製，所以我們又引入了 vis.js 這個繪圖函式庫來完成 3D 圖形的繪製工作。</p>
+<p>以下是我們將 vis.js 封裝成 G.js 的程式碼片段</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/G.js">G.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">VISG</span>.<span class="ot">prototype</span>.<span class="fu">curve3d</span> = <span class="kw">function</span>(f, box) {
+  <span class="co">// Create and populate a data table.</span>
+  <span class="kw">var</span> data = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">DataSet</span>();
+  <span class="co">// create some nice looking data with sin/cos</span>
+  <span class="kw">var</span> counter = <span class="dv">0</span>;
+  <span class="kw">var</span> steps = <span class="dv">50</span>;  <span class="co">// number of datapoints will be steps*steps</span>
+  <span class="kw">var</span> axisMax = <span class="dv">314</span>;
+  <span class="kw">var</span> axisStep = axisMax / steps;
+  <span class="kw">for</span> (<span class="kw">var</span> x = <span class="dv">0</span>; x &lt; axisMax; x+=axisStep) {
+    <span class="kw">for</span> (<span class="kw">var</span> y = <span class="dv">0</span>; y &lt; axisMax; y+=axisStep) {
+      <span class="kw">var</span> value = <span class="fu">f</span>(x,y);
+      <span class="ot">data</span>.<span class="fu">add</span>({<span class="dt">id</span>:counter++,<span class="dt">x</span>:x,<span class="dt">y</span>:y,<span class="dt">z</span>:value,<span class="dt">style</span>:value});
+    }
+  }
+  <span class="kw">this</span>.<span class="fu">graph</span> = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Graph3d</span>(box, data, <span class="kw">this</span>.<span class="fu">options</span>);
+}
+...
+<span class="ot">G</span>.<span class="fu">curve3d</span> = <span class="kw">function</span>(f) {
+  <span class="ot">G</span>.<span class="ot">visg</span>.<span class="fu">curve3d</span>(f, <span class="ot">G</span>.<span class="fu">box</span>);
+}</code></pre>
+<p>接著、為了讓使用者編輯程式可以更容易，我們採用了這個 JavaScript 開源線上編輯器專案，該專案之援類似微軟 Visual Studio 的 IntelliSense 這樣的函數提示功能，</p>
+<ul>
+<li><a href="http://codemirror.net/">http://codemirror.net/</a></li>
+</ul>
+<div class="figure">
+<img src="../img/JsLabIntelliSense.jpg" alt="圖、JsLab 當中的程式碼上色與 IntelliSense 功能" /><p class="caption">圖、JsLab 當中的程式碼上色與 IntelliSense 功能</p>
+</div>
+<p>以下是我們將 codemirror 封裝成 <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/E.js">E.js</a> (Editor) 的完整程式碼。</p>
+<p>檔案： <a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/E.js">E.js</a></p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="st">&quot;use strict&quot;</span>;
+
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/lib/codemirror.js&quot;</span>, <span class="st">&quot;CodeMirror&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/addon/hint/show-hint.js&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/addon/hint/javascript-hint.js&quot;</span>);
+<span class="ot">U</span>.<span class="fu">use</span>(<span class="st">&quot;../js/codemirror/mode/javascript/javascript.js&quot;</span>);
+
+E = {};
+
+<span class="kw">if</span> (<span class="kw">typeof</span> module!==<span class="st">&quot;undefined&quot;</span>) <span class="ot">module</span>.<span class="fu">exports</span> = E;
+
+<span class="ot">E</span>.<span class="fu">editor</span> = <span class="kw">null</span>;
+
+<span class="ot">E</span>.<span class="fu">loadEditor</span> = <span class="kw">function</span>(codebox) {
+  <span class="ot">E</span>.<span class="fu">codebox</span> = codebox;
+  <span class="ot">E</span>.<span class="fu">editor</span> = <span class="ot">CodeMirror</span>.<span class="fu">fromTextArea</span>(codebox, {
+    <span class="dt">lineNumbers</span>: <span class="kw">true</span>,
+    <span class="dt">extraKeys</span>: {<span class="st">&quot;Ctrl-.&quot;</span>: <span class="st">&quot;autocomplete&quot;</span>},
+    <span class="dt">lineWrapping</span>: <span class="kw">true</span>, 
+    <span class="dt">styleActiveLine</span>: <span class="kw">true</span>,
+    <span class="dt">mode</span>: {<span class="dt">name</span>: <span class="st">&quot;javascript&quot;</span>, <span class="dt">globalVars</span>: <span class="kw">true</span>}
+  });
+  
+  <span class="ot">E</span>.<span class="ot">editor</span>.<span class="fu">on</span>(<span class="st">&#39;update&#39;</span>, <span class="kw">function</span>(instance){
+    <span class="ot">E</span>.<span class="ot">codebox</span>.<span class="fu">value</span> = <span class="ot">instance</span>.<span class="fu">getValue</span>();
+  });  
+}</code></pre>
+<p>未來、我們可能會進一步整合更多的函式庫，目前預計在「矩陣運算領域」會採用了 jStat 與 numeric.js 等函式庫，而在數位訊號語音處理領域可能會採用 DSP.js，影像處理領域可能採用 CamanJS 等等，這些函式庫的網址如下：</p>
+<ul>
+<li><a href="http://numericjs.com/">http://numericjs.com/</a></li>
+<li><a href="https://github.com/corbanbrook/dsp.js/">https://github.com/corbanbrook/dsp.js/</a></li>
+<li><a href="http://camanjs.com/">http://camanjs.com/</a></li>
+</ul>
+<p>目前、網路上的 JavaScript 的函式庫還持續的急速增長中，我們相信之後會有更多更好用的 JavaScript 科學計算函式庫出現，我們只要能將這些好用的函式庫整合進來，就能創建一個完整的科學計算平台了，而這也正是 JsLab 計劃所想要達成的目標。</p>
+<p>由於 JavaScript 是瀏覽器當中唯一能使用的官方語言，因此我們認為未來 JavaScript 的發揮空間將會越來越大，就像 Jeff Atwood 在 2007 年所提出的 Atwood's Law 所說的：</p>
+<blockquote>
+<p>Any application that can be written in JavaScript, will eventually be written in JavaScript.</p>
+</blockquote>
+<p>換句話說 -- 「任何可以寫成 JavaScript 的應用程式，最後都會被寫成 JavaScript」。</p>
+<p>如果 Atwood's Law 成立的話，那基於 JavaScript 的科學計算平台就應該要出現啊！</p>
+<p>我們正在以行動來實現 Atwood 的話，這個行動的代號就是 JsLab 。</p>
+<h3 id="參考文獻"><a href="#參考文獻">參考文獻</a></h3>
+<ul>
+<li><a href="http://www.iterduo.com/0401-atwood.html">Atwood定律：“任何可以使用JavaScript来编写的应用，最终会由JavaScript编写。”</a></li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#r.js----從-jstat-延伸出的開源-javascript-機率統計框架">R.js -- 從 jStat 延伸出的開源 JavaScript 機率統計框架</a></li>
+</ul>
+</div>
+<h2 id="r.js----從-jstat-延伸出的開源-javascript-機率統計框架"><a href="#r.js----從-jstat-延伸出的開源-javascript-機率統計框架">R.js -- 從 jStat 延伸出的開源 JavaScript 機率統計框架</a></h2>
+<p>我自從開始用 R 學習機率統計之後，就覺得這樣的科學計算平台真的很棒。</p>
+<p>但可惜的是、我現在所使用的主力語言是 JavaScript，因為 JavaScript 是瀏覽器的唯一語言，而且有了 node.js 這樣的平台之後，可以通吃客戶端與伺服端兩方的應用。</p>
+<p>於是我想要用 JavaScript 創造出一個類似 R 的環境，並且可以在 Web 上執行，所以就創造了 jsLab 專案。</p>
+<p>但是、為了讓 jsLab 能支援那些機率統計功能，我必須尋找用 JavaScript 語言撰寫的機率統計函式庫。</p>
+<p>在 2012 年我就注意到了 jStat 這個支援機率模型的函式庫，當時這個函式庫還有專屬的網站，但是現在這個函式庫連網站都不見了，還好在 github 裏還有一份原始碼，網址如下：</p>
+<ul>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+</ul>
+<p>jStat 在機率模型的部分支援還算完整，但是在統計檢定的部分就相當薄弱，雖然也支援矩陣運算等功能，但是在 JavaScript 語言上， jStat 的矩陣運算支援並不算特別好的。</p>
+<p>因此、我們決定將 jStat 重新包裝，成為一個新的 javascript 檔案，稱為 R.js ，這是 jsLab 專案的主要程式碼之一， R.js 的網址如下。</p>
+<ul>
+<li><a href="https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js">https://github.com/ccckmit/jslab/blob/gh-pages/source/R.js</a></li>
+</ul>
+<p>您可以看到在 R.js 檔案裏，能夠呼叫 jStat 完成的部分，我們都盡可能的交給 jStat 來做，而 jStat 在這部份也確實做得很不錯。</p>
+<p>檔案： R.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="co">// 均等分布</span>
+<span class="ot">R</span>.<span class="fu">runif</span>=<span class="kw">function</span>(n, a, b) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">sample</span>, a, b); }
+<span class="ot">R</span>.<span class="fu">dunif</span>=<span class="kw">function</span>(x, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">pdf</span>(x, a, b); }
+<span class="ot">R</span>.<span class="fu">punif</span>=<span class="kw">function</span>(q, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">cdf</span>(q, a, b); }
+<span class="ot">R</span>.<span class="fu">qunif</span>=<span class="kw">function</span>(p, a, b) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">uniform</span>.<span class="fu">inv</span>(p, a, b); }
+<span class="co">// 常態分布</span>
+<span class="ot">R</span>.<span class="fu">rnorm</span>=<span class="kw">function</span>(n, mean, sd) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">sample</span>, mean, sd); }
+<span class="ot">R</span>.<span class="fu">dnorm</span>=<span class="kw">function</span>(x, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">pdf</span>(x, mean, sd); }
+<span class="ot">R</span>.<span class="fu">pnorm</span>=<span class="kw">function</span>(q, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">cdf</span>(q, mean, sd); }
+<span class="co">// R.qnorm=function(p, mean, sd) { return R.q2x(p, function (q) { return R.pnorm(q, mean, sd);});}</span>
+<span class="ot">R</span>.<span class="fu">qnorm</span>=<span class="kw">function</span>(p, mean, sd) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">normal</span>.<span class="fu">inv</span>(p, mean, sd); }
+<span class="co">// 布瓦松分布</span>
+<span class="ot">R</span>.<span class="fu">rpois</span>=<span class="kw">function</span>(n, l) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">sample</span>, l); }
+<span class="ot">R</span>.<span class="fu">dpois</span>=<span class="kw">function</span>(x, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">pdf</span>(x, l); }
+<span class="ot">R</span>.<span class="fu">ppois</span>=<span class="kw">function</span>(q, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">cdf</span>(q, l); }
+<span class="ot">R</span>.<span class="fu">qpois</span>=<span class="kw">function</span>(p, l) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">poisson</span>.<span class="fu">inv</span>(p, l); }
+
+<span class="co">// F 分布</span>
+<span class="ot">R</span>.<span class="fu">rf</span>=<span class="kw">function</span>(n, df1, df2) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">sample</span>, df1, df2); }
+<span class="ot">R</span>.<span class="fu">df</span>=<span class="kw">function</span>(x, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">pdf</span>(x, df1, df2); }
+<span class="ot">R</span>.<span class="fu">pf</span>=<span class="kw">function</span>(q, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">cdf</span>(q, df1, df2); }
+<span class="ot">R</span>.<span class="fu">qf</span>=<span class="kw">function</span>(p, df1, df2) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">centralF</span>.<span class="fu">inv</span>(p, df1, df2); }
+<span class="co">// T 分布</span>
+<span class="ot">R</span>.<span class="fu">rt</span>=<span class="kw">function</span>(n, dof) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">sample</span>, dof); }
+<span class="ot">R</span>.<span class="fu">dt</span>=<span class="kw">function</span>(x, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">pdf</span>(x, dof); }
+<span class="ot">R</span>.<span class="fu">pt</span>=<span class="kw">function</span>(q, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">cdf</span>(q, dof); }
+<span class="ot">R</span>.<span class="fu">qt</span>=<span class="kw">function</span>(p, dof) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">studentt</span>.<span class="fu">inv</span>(p, dof); }
+...</code></pre>
+<p>不過、在離散的機率分布上面，jStat 就支援的比較不好，而且沒有支援像 inv 這類的函數，於是我們就得自己來補足，以下是我們用 jStat 與自己寫的程式所合成的一些離散分布原始碼。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">R</span>.<span class="fu">sample1</span>=<span class="kw">function</span>(a, p) { 
+  <span class="kw">var</span> r = <span class="ot">Math</span>.<span class="fu">random</span>();
+  <span class="kw">var</span> u = <span class="ot">R</span>.<span class="fu">repeats</span>(<span class="fl">1.0</span>, <span class="ot">a</span>.<span class="fu">length</span>);
+  p = <span class="ot">R</span>.<span class="fu">def</span>(p, <span class="ot">R</span>.<span class="fu">normalize</span>(u));
+  <span class="kw">var</span> psum = <span class="dv">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> i <span class="kw">in</span> p) {
+    psum += p[i];
+    <span class="kw">if</span> (psum &gt; r)
+      <span class="kw">return</span> a[i];
+  }
+  <span class="kw">return</span> <span class="kw">null</span>;
+}
+
+<span class="ot">R</span>.<span class="fu">sample</span>=<span class="kw">function</span>(x, n, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">R</span>.<span class="fu">sample1</span>, x, p); }
+
+<span class="co">// 二項分布</span>
+<span class="ot">R</span>.<span class="fu">rbinom</span>=<span class="kw">function</span>(n, N, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">sample</span>, N, p); }
+<span class="ot">R</span>.<span class="fu">dbinom</span>=<span class="kw">function</span>(x, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">pdf</span>(x, N, p); }
+<span class="ot">R</span>.<span class="fu">pbinom</span>=<span class="kw">function</span>(k, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">binomial</span>.<span class="fu">cdf</span>(k, N, p); }
+<span class="ot">R</span>.<span class="fu">qbinom</span>=<span class="kw">function</span>(q, N, p) { 
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;=N; i++) {
+    <span class="kw">if</span> (<span class="ot">R</span>.<span class="fu">pbinom</span>(i, N, p) &gt; q) <span class="kw">return</span> i;
+  }
+  <span class="kw">return</span> N;
+}
+
+<span class="co">// 負二項分布</span>
+<span class="ot">R</span>.<span class="fu">rnbinom</span>=<span class="kw">function</span>(n, N, p) { <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">calls</span>(n, <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">sample</span>, N, p); }
+<span class="ot">R</span>.<span class="fu">dnbinom</span>=<span class="kw">function</span>(x, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">pdf</span>(x, N, p); }
+<span class="ot">R</span>.<span class="fu">pnbinom</span>=<span class="kw">function</span>(k, N, p) { <span class="kw">return</span> <span class="ot">jStat</span>.<span class="ot">negbin</span>.<span class="fu">cdf</span>(k, N, p); }
+<span class="co">// R.qnbinom=function(p, N, q) { return jStat.negbin.inv(p, N, q); }</span>
+<span class="ot">R</span>.<span class="fu">qnbinom</span>=<span class="kw">function</span>(q, N, p) { 
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;N; i++) {
+    <span class="kw">if</span> (<span class="ot">R</span>.<span class="fu">pnbinom</span>(i, N, p) &gt; q) <span class="kw">return</span> i;
+  }
+  <span class="kw">return</span> N;
+}
+...</code></pre>
+<p>另外、由於 jStat 在統計檢定方面的函數也很薄弱，所以我們撰寫了以下這個檢定的抽象函數，實作時只要補足「 q2p, o2q, h, df」等函數，就可以做出一個檢定功能了。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">...
+<span class="ot">R</span>.<span class="fu">test</span> = <span class="kw">function</span>(o) { <span class="co">// name, D, x, mu, sd, y, alpha, op</span>
+  <span class="kw">var</span> D      = <span class="ot">o</span>.<span class="fu">D</span>;
+  <span class="kw">var</span> x      = <span class="ot">o</span>.<span class="fu">x</span>;
+  <span class="kw">var</span> alpha  = <span class="ot">R</span>.<span class="fu">opt</span>(o, <span class="st">&quot;alpha&quot;</span>, <span class="fl">0.05</span>);
+  <span class="ot">o</span>.<span class="fu">op</span>       = <span class="ot">R</span>.<span class="fu">opt</span>(o, <span class="st">&quot;op&quot;</span>, <span class="st">&quot;=&quot;</span>);
+  
+  <span class="kw">var</span> pvalue, interval;
+  <span class="kw">var</span> q1     = <span class="ot">D</span>.<span class="fu">o2q</span>(o); <span class="co">// 單尾檢定的 pvalue</span>
+  
+  <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;=&quot;</span>) {
+    <span class="kw">if</span> (q1&gt;<span class="fl">0.5</span>) q1 = <span class="dv">1</span>-q1; <span class="co">// (q1&gt;0.5) 取右尾，否則取左尾。</span>
+    pvalue= <span class="dv">2</span>*q1; <span class="co">// 對稱情況：雙尾檢定的 p 值是單尾的兩倍。</span>
+    interval = [<span class="ot">D</span>.<span class="fu">q2p</span>(alpha/<span class="dv">2</span>, o, <span class="st">&quot;L&quot;</span>), <span class="ot">D</span>.<span class="fu">q2p</span>(<span class="dv">1</span>-alpha/<span class="dv">2</span>, o, <span class="st">&quot;R&quot;</span>)];
+  } <span class="kw">else</span> {
+    <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;&lt;&quot;</span>) { <span class="co">// 右尾檢定 H0: q &lt; 1-alpha, </span>
+      interval = [ <span class="ot">D</span>.<span class="fu">q2p</span>(alpha, o, <span class="st">&quot;L&quot;</span>), <span class="kw">Infinity</span> ]; 
+      pvalue = <span class="dv">1</span>-q1;
+    }
+    <span class="kw">if</span> (<span class="ot">o</span>.<span class="fu">op</span> === <span class="st">&quot;&gt;&quot;</span>) { <span class="co">// 左尾檢定 H0: q &gt; alpha</span>
+      interval=[-<span class="kw">Infinity</span>, <span class="ot">D</span>.<span class="fu">q2p</span>(<span class="dv">1</span>-alpha, o, <span class="st">&quot;R&quot;</span>)];
+      pvalue = q1;
+    }
+  }
+
+  <span class="kw">return</span> { <span class="dt">name</span>: <span class="ot">o</span>.<span class="fu">name</span>,
+           <span class="dt">h</span>: <span class="ot">D</span>.<span class="fu">h</span>(o),
+           <span class="dt">alpha</span>: alpha,
+           <span class="dt">op</span>: <span class="ot">o</span>.<span class="fu">op</span>, 
+           <span class="dt">pvalue</span>: pvalue, 
+           <span class="dt">ci </span>: interval, 
+           <span class="dt">df </span>: <span class="ot">D</span>.<span class="fu">df</span>(o),
+           <span class="dt">report</span>: <span class="kw">function</span>() { <span class="ot">R</span>.<span class="fu">report</span>(<span class="kw">this</span>) }
+           };
+}
+...</code></pre>
+<p>舉例而言，以下這個物件 t1 實作了 R.test 中所需要的函數，因此我們就可以透過「 <code>o.D = t1; t = R.test(o);</code> 這兩行指令呼叫 R.test 函數，完成單樣本的 t 檢定工作。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> t1 = { <span class="co">// 單樣本 T 檢定 t = (X-mu)/(S/sqrt(n))</span>
+  <span class="dt">h</span>:<span class="kw">function</span>(o) { <span class="kw">return</span> <span class="st">&quot;H0:mu&quot;</span>+<span class="ot">o</span>.<span class="fu">op</span>+<span class="ot">o</span>.<span class="fu">mu</span>; }, 
+  <span class="dt">o2q</span>:<span class="kw">function</span>(o) {
+    <span class="kw">var</span> x = <span class="ot">o</span>.<span class="fu">x</span>, n = <span class="ot">x</span>.<span class="fu">length</span>;
+    <span class="co">// t=(X-mu)/(sd/sqrt(n))</span>
+    <span class="kw">var</span> t = (<span class="ot">R</span>.<span class="fu">mean</span>(x)-<span class="ot">o</span>.<span class="fu">mu</span>)/(<span class="ot">R</span>.<span class="fu">sd</span>(x)/<span class="ot">Math</span>.<span class="fu">sqrt</span>(n)); 
+    <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">pt</span>(t, n<span class="dv">-1</span>);
+  },
+  <span class="co">// P(X-mu/(S/sqrt(n))&lt;t) = q ; 信賴區間 P(T&lt;q)</span>
+  <span class="co">// P(mu &gt; X-t*S/sqrt(n)) = q ; 這反而成了右尾檢定，所以左尾與右尾確實會反過來</span>
+  <span class="dt">q2p</span>:<span class="kw">function</span>(q, o) {
+    <span class="kw">var</span> x = <span class="ot">o</span>.<span class="fu">x</span>, n = <span class="ot">x</span>.<span class="fu">length</span>;
+    <span class="kw">return</span> <span class="ot">R</span>.<span class="fu">mean</span>(x) + <span class="ot">R</span>.<span class="fu">qt</span>(q, n<span class="dv">-1</span>) * <span class="ot">R</span>.<span class="fu">sd</span>(x) / <span class="ot">Math</span>.<span class="fu">sqrt</span>(n);
+  },
+  <span class="dt">df</span>:<span class="kw">function</span>(o) { <span class="kw">return</span> <span class="ot">o</span>.<span class="ot">x</span>.<span class="fu">length</span><span class="dv">-1</span>; }
+}
+...
+<span class="ot">R</span>.<span class="fu">ttest</span> = <span class="kw">function</span>(o) { 
+  <span class="kw">var</span> t;
+  <span class="kw">if</span> (<span class="kw">typeof</span> <span class="ot">o</span>.<span class="fu">y</span> === <span class="st">&quot;undefined&quot;</span>) {
+    <span class="ot">o</span>.<span class="fu">name</span> = <span class="st">&quot;ttest(X)&quot;</span>;
+    <span class="ot">o</span>.<span class="fu">D</span> = t1;
+    t = <span class="ot">R</span>.<span class="fu">test</span>(o);
+    <span class="ot">t</span>.<span class="fu">mean</span> = <span class="ot">R</span>.<span class="fu">mean</span>(<span class="ot">o</span>.<span class="fu">x</span>);
+    <span class="ot">t</span>.<span class="fu">sd</span>   = <span class="ot">R</span>.<span class="fu">sd</span>(<span class="ot">o</span>.<span class="fu">x</span>);
+  } <span class="kw">else</span> {</code></pre>
+<p>目前我們已經在 R.js 中加入了大部份的機率分布、還有基本的「有母數」檢定功能，之後會再加入「無母數檢定的功能」。</p>
+<p>另外、我們也已經加入了基本的圖表繪製功能在 G.js 當中，於是形成了 jsLab 專案的基本架構，希望之後還能找到更多更棒的 JavaScript 科學計算函式庫，讓 JavaScript 語言也能 成為科學計算的良好平台。</p>
+<h3 id="參考文獻"><a href="#參考文獻">參考文獻</a></h3>
+<ul>
+<li><a href="https://github.com/jstat/jstat">https://github.com/jstat/jstat</a></li>
+<li><a href="https://github.com/ccckmit/jslab/tree/gh-pages">https://github.com/ccckmit/jslab/tree/gh-pages</a></li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

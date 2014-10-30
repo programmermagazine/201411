@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#vis.js----另一個強大的-javascript-繪圖函式庫">Vis.js -- 另一個強大的 JavaScript 繪圖函式庫</a></li>
+</ul>
+</div>
+<h2 id="vis.js----另一個強大的-javascript-繪圖函式庫"><a href="#vis.js----另一個強大的-javascript-繪圖函式庫">Vis.js -- 另一個強大的 JavaScript 繪圖函式庫</a></h2>
+<p>雖然前述的 d3.js 與 c3.js 可以做到繪圖功能，但是這兩個函式庫強調的是互動性介面，而不是繪圖功能的部份。</p>
+<p>於是、我找到了 vis.js 這個專注於繪圖的函式庫，這個函式庫雖然再互動性上表現得沒有 c3 那麼好，但是在繪圖功能上卻非常的完整，該有的圖型幾乎都有，特別是有關「 3D 地形圖」、「網路線圖」和的部份，是 C3 所不具備的功能，因此我們拿 vis.js 來繪製這兩類的圖形。</p>
+<p>您可以點選下列連結，看看 vis.js 的眾多範例，相信您會對這個繪圖框架感到印象深刻的。</p>
+<ul>
+<li><a href="http://visjs.org/#example">http://visjs.org/#example</a></li>
+</ul>
+<p>舉例而言、以下網頁是用來繪製 3D 地形圖的完整原始碼，</p>
+<p>網址：<a href="http://visjs.org/examples/graph3d/example01_basis.html">http://visjs.org/examples/graph3d/example01_basis.html</a></p>
+<div class="figure">
+<img src="../img/vis3D.jpg" alt="圖、用 Vis.js 繪製 3D 圖形" /><p class="caption">圖、用 Vis.js 繪製 3D 圖形</p>
+</div>
+<p>以下是上述範例的完整 HTML 檔案。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!DOCTYPE HTML PUBLIC <span class="st">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="st">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Graph 3D demo&lt;<span class="ot">/title&gt;</span>
+
+<span class="ot">  &lt;style&gt;</span>
+<span class="ot">    body {font: 10pt arial;}</span>
+<span class="ot">  &lt;/style</span>&gt;
+
+  &lt;script type=<span class="st">&quot;text/javascript&quot;</span> src=<span class="st">&quot;../../dist/vis.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot;&gt;</span>
+    <span class="kw">var</span> data = <span class="kw">null</span>;
+    <span class="kw">var</span> graph = <span class="kw">null</span>;
+
+    <span class="kw">function</span> <span class="fu">custom</span>(x, y) {
+      <span class="kw">return</span> (<span class="ot">Math</span>.<span class="fu">sin</span>(x/<span class="dv">50</span>) * <span class="ot">Math</span>.<span class="fu">cos</span>(y/<span class="dv">50</span>) * <span class="dv">50</span> + <span class="dv">50</span>);
+    }
+
+    <span class="co">// Called when the Visualization API is loaded.</span>
+    <span class="kw">function</span> <span class="fu">drawVisualization</span>() {
+      <span class="co">// Create and populate a data table.</span>
+      data = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">DataSet</span>();
+      <span class="co">// create some nice looking data with sin/cos</span>
+      <span class="kw">var</span> counter = <span class="dv">0</span>;
+      <span class="kw">var</span> steps = <span class="dv">50</span>;  <span class="co">// number of datapoints will be steps*steps</span>
+      <span class="kw">var</span> axisMax = <span class="dv">314</span>;
+      <span class="kw">var</span> axisStep = axisMax / steps;
+      <span class="kw">for</span> (<span class="kw">var</span> x = <span class="dv">0</span>; x &lt; axisMax; x+=axisStep) {
+        <span class="kw">for</span> (<span class="kw">var</span> y = <span class="dv">0</span>; y &lt; axisMax; y+=axisStep) {
+          <span class="kw">var</span> value = <span class="fu">custom</span>(x,y);
+          <span class="ot">data</span>.<span class="fu">add</span>({<span class="dt">id</span>:counter++,<span class="dt">x</span>:x,<span class="dt">y</span>:y,<span class="dt">z</span>:value,<span class="dt">style</span>:value});
+        }
+      }
+
+      <span class="co">// specify options</span>
+      <span class="kw">var</span> options = {
+        <span class="dt">width</span>:  <span class="st">&#39;600px&#39;</span>,
+        <span class="dt">height</span>: <span class="st">&#39;600px&#39;</span>,
+        <span class="dt">style</span>: <span class="st">&#39;surface&#39;</span>,
+        <span class="dt">showPerspective</span>: <span class="kw">true</span>,
+        <span class="dt">showGrid</span>: <span class="kw">true</span>,
+        <span class="dt">showShadow</span>: <span class="kw">false</span>,
+        <span class="dt">keepAspectRatio</span>: <span class="kw">true</span>,
+        <span class="dt">verticalRatio</span>: <span class="fl">0.5</span>
+      };
+
+      <span class="co">// Instantiate our graph object.</span>
+      <span class="kw">var</span> container = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&#39;mygraph&#39;</span>);
+      graph = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Graph3d</span>(container, data, options);
+    }
+  &lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;/head</span>&gt;
+
+&lt;body onload=<span class="st">&quot;drawVisualization();&quot;</span>&gt;
+&lt;div id=<span class="st">&quot;mygraph&quot;</span>&gt;&lt;<span class="ot">/div&gt;</span>
+
+<span class="ot">&lt;div id=&quot;info&quot;&gt;&lt;/div</span>&gt;
+&lt;<span class="ot">/body&gt;</span>
+<span class="ot">&lt;/html</span>&gt;</code></pre>
+<p>而在網路圖方面，您甚至可以指定每個節點應該呈現的圖片，以下是一個繪製電腦網路圖的範例。</p>
+<ul>
+<li><a href="http://visjs.org/examples/network/03_images.html">http://visjs.org/examples/network/03_images.html</a></li>
+</ul>
+<div class="figure">
+<img src="../img/visNet.jpg" alt="圖、用 vis.js 繪製電腦網路圖" /><p class="caption">圖、用 vis.js 繪製電腦網路圖</p>
+</div>
+<p>以下是上述範例的完整 HTML 檔案。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Network | Images&lt;<span class="ot">/title&gt;</span>
+
+<span class="ot">  &lt;style type=&quot;text/css</span><span class="st">&quot;&gt;</span>
+    body {
+      <span class="dt">font</span>: 10pt arial;
+    }
+    #mynetwork {
+      <span class="dt">width</span>: 600px;
+      <span class="dt">height</span>: 600px;
+      <span class="dt">border</span>: 1px solid lightgray;
+    }
+  &lt;<span class="ot">/style&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot; src=&quot;</span>../../dist/<span class="ot">vis</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+  &lt;link href=<span class="st">&quot;../../dist/vis.css&quot;</span> rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> <span class="ot">/&gt;</span>
+
+<span class="ot">  &lt;script type=&quot;text/javascript</span><span class="st">&quot;&gt;</span>
+    <span class="kw">var</span> nodes = <span class="kw">null</span>;
+    <span class="kw">var</span> edges = <span class="kw">null</span>;
+    <span class="kw">var</span> network = <span class="kw">null</span>;
+
+    <span class="kw">var</span> DIR = <span class="st">&#39;img/refresh-cl/&#39;</span>;
+    <span class="kw">var</span> LENGTH_MAIN = <span class="dv">150</span>;
+    <span class="kw">var</span> LENGTH_SUB = <span class="dv">50</span>;
+
+    <span class="co">// Called when the Visualization API is loaded.</span>
+    <span class="kw">function</span> <span class="fu">draw</span>() {
+      <span class="co">// Create a data table with nodes.</span>
+      nodes = [];
+
+      <span class="co">// Create a data table with links.</span>
+      edges = [];
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">1</span>, <span class="dt">label</span>: <span class="st">&#39;Main&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">2</span>, <span class="dt">label</span>: <span class="st">&#39;Office&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">3</span>, <span class="dt">label</span>: <span class="st">&#39;Wireless&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Pipe-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">2</span>, <span class="dt">length</span>: LENGTH_MAIN});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">3</span>, <span class="dt">length</span>: LENGTH_MAIN});
+
+      <span class="kw">for</span> (<span class="kw">var</span> i = <span class="dv">4</span>; i &lt;= <span class="dv">7</span>; i++) {
+        <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: i, <span class="dt">label</span>: <span class="st">&#39;Computer&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-My-Computer-3-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+        <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">2</span>, <span class="dt">to</span>: i, <span class="dt">length</span>: LENGTH_SUB});
+      }
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">101</span>, <span class="dt">label</span>: <span class="st">&#39;Printer&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-Printer-Blue-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">2</span>, <span class="dt">to</span>: <span class="dv">101</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">102</span>, <span class="dt">label</span>: <span class="st">&#39;Laptop&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-Laptop-1-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">3</span>, <span class="dt">to</span>: <span class="dv">102</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">103</span>, <span class="dt">label</span>: <span class="st">&#39;network drive&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Network-Drive-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">103</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: <span class="dv">104</span>, <span class="dt">label</span>: <span class="st">&#39;Internet&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;System-Firewall-2-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+      <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">1</span>, <span class="dt">to</span>: <span class="dv">104</span>, <span class="dt">length</span>: LENGTH_SUB});
+
+      <span class="kw">for</span> (<span class="kw">var</span> i = <span class="dv">200</span>; i &lt;= <span class="dv">201</span>; i++ ) {
+        <span class="ot">nodes</span>.<span class="fu">push</span>({<span class="dt">id</span>: i, <span class="dt">label</span>: <span class="st">&#39;Smartphone&#39;</span>, <span class="dt">image</span>: DIR + <span class="st">&#39;Hardware-My-PDA-02-icon.png&#39;</span>, <span class="dt">shape</span>: <span class="st">&#39;image&#39;</span>});
+        <span class="ot">edges</span>.<span class="fu">push</span>({<span class="dt">from</span>: <span class="dv">3</span>, <span class="dt">to</span>: i, <span class="dt">length</span>: LENGTH_SUB});
+      }
+
+      <span class="co">// create a network</span>
+      <span class="kw">var</span> container = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&#39;mynetwork&#39;</span>);
+      <span class="kw">var</span> data = {
+        <span class="dt">nodes</span>: nodes,
+        <span class="dt">edges</span>: edges
+      };
+      <span class="kw">var</span> options = {
+        <span class="dt">stabilize</span>: <span class="kw">false</span>   <span class="co">// stabilize positions before displaying</span>
+      };
+      network = <span class="kw">new</span> <span class="ot">vis</span>.<span class="fu">Network</span>(container, data, options);
+    }
+  &lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;/head</span>&gt;
+
+&lt;body onload=<span class="st">&quot;draw()&quot;</span>&gt;
+
+&lt;div id=<span class="st">&quot;mynetwork&quot;</span>&gt;&lt;<span class="ot">/div&gt;</span>
+
+<span class="ot">&lt;/body</span>&gt;
+&lt;<span class="ot">/html&gt;</span></code></pre>
+<p>透過這兩個範例，相信您應該可以感覺到 vis.js 的誠意，這真的是一個相當棒的繪圖函式庫啊！</p>
+<h3 id="參考文獻"><a href="#參考文獻">參考文獻</a></h3>
+<ul>
+<li><a href="http://visjs.org/">http://visjs.org/</a></li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

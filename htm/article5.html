@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  <a href="http://programmermagazine.github.io/201411/htm/home.html">2014 年 11 月號</a> (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<div id="TOC">
+<ul>
+<li><a href="#memory-sanitization-作者研發養成所-bridan">Memory Sanitization (作者：研發養成所 Bridan)</a></li>
+</ul>
+</div>
+<h2 id="memory-sanitization-作者研發養成所-bridan"><a href="#memory-sanitization-作者研發養成所-bridan">Memory Sanitization (作者：研發養成所 Bridan)</a></h2>
+<p>什麼叫記憶體衛生處理？讓我們先看個故事再做說明。</p>
+<p>阿誠是某高科技公司的工程師，他負責 使用儀器量測新產品實驗數據，有位同事阿堅和他很要好，常常去實驗室找他聊天，其實阿堅是另一家公司派來長期臥底的間諜，專門探詢公司最新研發的產品。公司有一台極輕巧的溫度監控儀，阿誠常使用它對新產品零件溫度監控，實驗完畢後，資料當然改存到電腦中，並且依據儀器說明書上，資料清除步驟清資料。一天阿堅向阿誠借用這儀器，其實他是把儀器拿給儀器駭客進行逆向工程，去解碼原始實驗資料。</p>
+<p>從這故事，你學到了什麼？有許多科技公司對資訊安全非常在意，連清理資料也要徹底破壞！</p>
+<p>大家都知道在 <em>電腦上刪除檔案，只不過是把檔案搬移到資源回收筒，隨時可以檔案還原，稍微注意的人，還會清除資源回收筒的檔案，更高竿的會再進行衛生處理，徹底洗掉不要的資料。</em></p>
+<p>一般資料庫，清除資料的做法是破壞資料索引，簡單的說，利用一個索引指示有多少資料在資料庫中，如果索引為N，表示有N筆資料在其中，使用者可以循序用指令將資料取出。當索引為零時，也表示資料庫資料清除。這方法雖然快速簡單，可是欠缺資料安全性，為避免上述事件發生，除了一般清除，還要另外設計徹底清除功能。換個例子說明，也就是上完廁所，除了擦屁股，沖水之外，不要忘記馬桶順便刷一刷洗一洗，徹底做個衛生處理。</p>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>
